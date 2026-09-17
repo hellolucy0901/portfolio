@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EUNYEM KO — UX/UI designer. Clear experiences through analysis and structure.">
+    <title>EUNYEM KO | UX/UI Designer</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <!-- 상단 헤더 -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#home" class="site-logo" aria-label="EUNYEM KO — Home">
+                EUNYEM KO
+            </a>
+
+            <!-- 본문 섹션 제작 시 id="work", id="about", id="contact"를 연결합니다. -->
+            <nav class="main-nav" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#work">Work</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- 오디오 기능을 구현한 뒤 disabled를 제거합니다. 자동 재생은 하지 않습니다. -->
+            <div class="header-utils">
+                <button type="button" class="sound-toggle" aria-pressed="false" disabled>Sound</button>
+                <button type="button" class="bgm-toggle" aria-pressed="false" disabled>BGM</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-inner">
+                <!-- 왼쪽: 디자이너 소개 -->
+                <div class="hero-content">
+                    <p class="hero-eyebrow">
+                        <span class="eyebrow-line" aria-hidden="true"></span>
+                        <span>UX / UI DESIGNER</span>
+                    </p>
+
+                    <h1 id="hero-title" class="hero-title">
+                        <span>See Clearly.</span><br>
+                        <span>Design Better.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        I turn complex information and flows into
+                        clear experiences through analysis and structure.
+                    </p>
+
+                    <a href="#work" class="hero-cta">
+                        <span class="hero-cta-icon" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false">
+                                <path d="M4 12H20M14 6L20 12L14 18" stroke="currentColor" stroke-width="1" />
+                            </svg>
+                        </span>
+                        <span class="hero-cta-text">View Work</span>
+                    </a>
+                </div>
+                <!-- 오른쪽: 전체 콜라주. 나중에 중앙 입장 화면에서 오른쪽으로 이동합니다. -->
+                <div class="hero-visual">
+
+                    <div class="visual-group">
+                        <!-- 사진 뒤의 반투명 사각형 2개 -->
+                        <div class="visual-panel panel-01" aria-hidden="true"></div>
+                        <div class="visual-panel panel-02" aria-hidden="true"></div>
+
+                        <!--
+                            .visual-card: 카드별 위치와 GSAP 등장 이동
+                            .card-media: 사진을 자르는 영역. 원형 마스크도 여기에 적용
+                            .card-image: 호버 시 확대 / 블러 / 미세 이동
+                            .focus-frame: 사진 마스크 바깥에 둔 포커스 표시
+                            카드 클릭 동작은 JS 단계에서 연결합니다.
+                        -->
+
+                        <!-- 카드 01: 중앙의 큰 꽃 사진 -->
+                        <button type="button" class="visual-card card-01" data-card="flower"
+                            aria-label="Enter portfolio — flower image">
+                            <span class="card-media">
+                                <!-- 01 중앙 큰 꽃 이미지 -->
+                                <img src="./images/hero/flower_1.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 카드 02: 왼쪽의 흐릿한 사람 그림자 -->
+                        <button type="button" class="visual-card card-02" data-card="person"
+                            aria-label="Enter portfolio — silhouette image">
+                            <span class="card-media">
+                                <img src="./images/hero/shadow_2.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 카드 03: 오른쪽 위 원형 확대 사진 -->
+                        <button type="button" class="visual-card card-03 card-circle" data-card="examine"
+                            aria-label="Enter portfolio — close-up image">
+                            <span class="card-media">
+                                <img src="./images/hero/detail_2.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 카드 04: 왼쪽 아래의 잎 디테일 -->
+                        <button type="button" class="visual-card card-04" data-card="leaf-left"
+                            aria-label="Enter portfolio — left leaf detail">
+                            <span class="card-media">
+                                <img src="./images/hero/detail_3.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 카드 05: 오른쪽 아래의 넓은 잎 디테일 -->
+                        <button type="button" class="visual-card card-05" data-card="leaf-right"
+                            aria-label="Enter portfolio — right leaf detail">
+                            <span class="card-media">
+                                <img src="./images/hero/detail_1.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 카드 06: 가장 오른쪽의 작은 식물 그림자 -->
+                        <button type="button" class="visual-card card-06" data-card="plant-shadow"
+                            aria-label="Enter portfolio — plant shadow image">
+                            <span class="card-media">
+                                <img src="./images/hero/shadow_1.png" class="card-image" alt="" draggable="false">
+                            </span>
+                            <span class="focus-frame" aria-hidden="true">
+                                <span class="focus-corner top-left"></span>
+                                <span class="focus-corner top-right"></span>
+                                <span class="focus-corner bottom-left"></span>
+                                <span class="focus-corner bottom-right"></span>
+                            </span>
+                        </button>
+
+                        <!-- 번호 문구는 사진과 별도로 움직이도록 분리합니다. -->
+                        <ol class="visual-labels">
+                            <li class="visual-label label-01">
+                                <span class="label-number" aria-hidden="true">01</span>
+                                <span class="label-text">Identify</span>
+                                <span class="label-line" aria-hidden="true"></span>
+                            </li>
+                            <li class="visual-label label-02">
+                                <span class="label-number" aria-hidden="true">02</span>
+                                <span class="label-text">Examine</span>
+                                <span class="label-line" aria-hidden="true"></span>
+                            </li>
+                            <li class="visual-label label-03">
+                                <span class="label-number" aria-hidden="true">03</span>
+                                <span class="label-text">Organize</span>
+                                <span class="label-line" aria-hidden="true"></span>
+                            </li>
+                            <li class="visual-label label-04">
+                                <span class="label-number" aria-hidden="true">04</span>
+                                <span class="label-text">Design</span>
+                                <span class="label-line" aria-hidden="true"></span>
+                            </li>
+                        </ol>
+
+                        <!-- 오른쪽 아래 슬로건 -->
+                        <p class="visual-slogan">
+                            <span class="slogan-line" aria-hidden="true"></span>
+                            <span class="slogan-text">
+                                <span>CLEARER</span>
+                                <span>SIMPLER</span>
+                                <span>MORE HUMAN</span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 추후 Selected Works / About / Contact 섹션을 이곳에 추가합니다. -->
+    </main>
+
+    <!-- GSAP -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <!-- Hero GSAP -->
+    <script src="./js/hero.js"></script>
+</body>
+
+</html>
