@@ -1,215 +1,180 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="EUNYEM KO — UX/UI designer. Clear experiences through analysis and structure.">
-    <title>EUNYEM KO | UX/UI Designer</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucy — UX/UI Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="./script.js"></script>
 </head>
-
 <body>
-    <!-- 상단 헤더 -->
-    <header class="site-header">
-        <div class="header-inner">
-            <a href="#home" class="site-logo" aria-label="EUNYEM KO — Home">
-                EUNYEM KO
-            </a>
+  <header class="site-header">
+    <a class="brand" href="#intro" aria-label="Go to intro">LUCY.</a>
 
-            <!-- 본문 섹션 제작 시 id="work", id="about", id="contact"를 연결합니다. -->
-            <nav class="main-nav" aria-label="Main navigation">
-                <ul class="nav-list">
-                    <li><a href="#work">Work</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#work">WORK</a>
+      <a href="#skill">SKILL</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </header>
 
-            <!-- 오디오 기능을 구현한 뒤 disabled를 제거합니다. 자동 재생은 하지 않습니다. -->
-            <div class="header-utils">
-                <button type="button" class="sound-toggle" aria-pressed="false" disabled>Sound</button>
-                <button type="button" class="bgm-toggle" aria-pressed="false" disabled>BGM</button>
-            </div>
+  <main>
+    <!-- =========================================================
+         HERO / OBSERVE → FOCUS → STRUCTURE
+         Replace image files inside ./images with your final assets.
+         ========================================================= -->
+    <section id="intro" class="hero" aria-labelledby="hero-title">
+      <div class="intro-overlay" aria-hidden="true">
+        <div class="butterfly" data-butterfly>
+          <span class="wing wing-left"></span>
+          <span class="wing wing-right"></span>
         </div>
-    </header>
+      </div>
 
-    <main>
-        <section id="home" class="hero" aria-labelledby="hero-title">
-            <div class="hero-inner">
-                <!-- 왼쪽: 디자이너 소개 -->
-                <div class="hero-content">
-                    <p class="hero-eyebrow">
-                        <span class="eyebrow-line" aria-hidden="true"></span>
-                        <span>UX / UI DESIGNER</span>
-                    </p>
+      <div class="hero-copy">
+        <p class="eyebrow">UX/UI DESIGNER · FRONT-END</p>
+        <h1 id="hero-title">
+          I turn complex problems into clear experiences
+          through analysis, structure and thoughtful design.
+        </h1>
+        <p class="hero-subcopy">
+          Observe → Focus → Structure
+        </p>
+      </div>
 
-                    <h1 id="hero-title" class="hero-title">
-                        <span>See Clearly.</span><br>
-                        <span>Design Better.</span>
-                    </h1>
+      <div class="hero-stage" data-hero-stage>
+        <figure class="visual visual-main" data-visual="observe">
+          <img
+            src="./images/hero-main.jpg"
+            alt="Macro detail used as the main observation target"
+          />
+        </figure>
 
-                    <p class="hero-description">
-                        I turn complex information and flows into
-                        clear experiences through analysis and structure.
-                    </p>
+        <button
+          class="hotspot hotspot-a"
+          type="button"
+          data-target="examine"
+          aria-label="Examine selected detail"
+        ></button>
 
-                    <a href="#work" class="hero-cta">
-                        <span class="hero-cta-icon" aria-hidden="true">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" focusable="false">
-                                <path d="M4 12H20M14 6L20 12L14 18" stroke="currentColor" stroke-width="1" />
-                            </svg>
-                        </span>
-                        <span class="hero-cta-text">View Work</span>
-                    </a>
-                </div>
-                <!-- 오른쪽: 전체 콜라주. 나중에 중앙 입장 화면에서 오른쪽으로 이동합니다. -->
-                <div class="hero-visual">
+        <button
+          class="hotspot hotspot-b"
+          type="button"
+          data-target="detail"
+          aria-label="Notice selected texture"
+        ></button>
 
-                    <div class="visual-group">
-                        <!-- 사진 뒤의 반투명 사각형 2개 -->
-                        <div class="visual-panel panel-01" aria-hidden="true"></div>
-                        <div class="visual-panel panel-02" aria-hidden="true"></div>
+        <div class="connector connector-a" aria-hidden="true"></div>
+        <div class="connector connector-b" aria-hidden="true"></div>
 
-                        <!--
-                            .visual-card: 카드별 위치와 GSAP 등장 이동
-                            .card-media: 사진을 자르는 영역. 원형 마스크도 여기에 적용
-                            .card-image: 호버 시 확대 / 블러 / 미세 이동
-                            .focus-frame: 사진 마스크 바깥에 둔 포커스 표시
-                            카드 클릭 동작은 JS 단계에서 연결합니다.
-                        -->
+        <figure class="visual visual-circle" data-visual="examine">
+          <img src="./images/hero-examine.jpg" alt="Magnified wing texture" />
+          <figcaption>EXAMINE</figcaption>
+        </figure>
 
-                        <!-- 카드 01: 중앙의 큰 꽃 사진 -->
-                        <button type="button" class="visual-card card-01" data-card="flower"
-                            aria-label="Enter portfolio — flower image">
-                            <span class="card-media">
-                                <!-- 01 중앙 큰 꽃 이미지 -->
-                                <img src="./images/hero/flower_1.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <figure class="visual visual-blur" data-visual="unclear">
+          <img src="./images/hero-blur.jpg" alt="Blurred, unresolved information" />
+          <figcaption>UNCLEAR</figcaption>
+        </figure>
 
-                        <!-- 카드 02: 왼쪽의 흐릿한 사람 그림자 -->
-                        <button type="button" class="visual-card card-02" data-card="person"
-                            aria-label="Enter portfolio — silhouette image">
-                            <span class="card-media">
-                                <img src="./images/hero/shadow_2.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <figure class="visual visual-detail" data-visual="detail">
+          <img src="./images/hero-detail.jpg" alt="Fine texture discovered through observation" />
+          <figcaption>NOTICE</figcaption>
+        </figure>
 
-                        <!-- 카드 03: 오른쪽 위 원형 확대 사진 -->
-                        <button type="button" class="visual-card card-03 card-circle" data-card="examine"
-                            aria-label="Enter portfolio — close-up image">
-                            <span class="card-media">
-                                <img src="./images/hero/detail_2.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <figure class="visual visual-pattern" data-visual="pattern">
+          <img src="./images/hero-pattern.jpg" alt="Repeated pattern organized into structure" />
+          <figcaption>ORGANIZE</figcaption>
+        </figure>
 
-                        <!-- 카드 04: 왼쪽 아래의 잎 디테일 -->
-                        <button type="button" class="visual-card card-04" data-card="leaf-left"
-                            aria-label="Enter portfolio — left leaf detail">
-                            <span class="card-media">
-                                <img src="./images/hero/detail_3.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <figure class="visual visual-final" data-visual="structure" data-final-tile>
+          <img src="./images/hero-final.jpg" alt="Geometric final structure" />
+          <figcaption>DESIGN</figcaption>
+        </figure>
 
-                        <!-- 카드 05: 오른쪽 아래의 넓은 잎 디테일 -->
-                        <button type="button" class="visual-card card-05" data-card="leaf-right"
-                            aria-label="Enter portfolio — right leaf detail">
-                            <span class="card-media">
-                                <img src="./images/hero/detail_1.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <div
+          class="magnifier"
+          data-magnifier
+          role="img"
+          aria-label="Drag to inspect the main image"
+        ></div>
 
-                        <!-- 카드 06: 가장 오른쪽의 작은 식물 그림자 -->
-                        <button type="button" class="visual-card card-06" data-card="plant-shadow"
-                            aria-label="Enter portfolio — plant shadow image">
-                            <span class="card-media">
-                                <img src="./images/hero/shadow_1.png" class="card-image" alt="" draggable="false">
-                            </span>
-                            <span class="focus-frame" aria-hidden="true">
-                                <span class="focus-corner top-left"></span>
-                                <span class="focus-corner top-right"></span>
-                                <span class="focus-corner bottom-left"></span>
-                                <span class="focus-corner bottom-right"></span>
-                            </span>
-                        </button>
+        <div class="mobile-observation" data-mobile-observation aria-live="polite">
+          <img src="./images/hero-examine.jpg" alt="" />
+          <div>
+            <strong>EXAMINE</strong>
+            <span>Look closer before defining the problem.</span>
+          </div>
+        </div>
 
-                        <!-- 번호 문구는 사진과 별도로 움직이도록 분리합니다. -->
-                        <ol class="visual-labels">
-                            <li class="visual-label label-01">
-                                <span class="label-number" aria-hidden="true">01</span>
-                                <span class="label-text">Identify</span>
-                                <span class="label-line" aria-hidden="true"></span>
-                            </li>
-                            <li class="visual-label label-02">
-                                <span class="label-number" aria-hidden="true">02</span>
-                                <span class="label-text">Examine</span>
-                                <span class="label-line" aria-hidden="true"></span>
-                            </li>
-                            <li class="visual-label label-03">
-                                <span class="label-number" aria-hidden="true">03</span>
-                                <span class="label-text">Organize</span>
-                                <span class="label-line" aria-hidden="true"></span>
-                            </li>
-                            <li class="visual-label label-04">
-                                <span class="label-number" aria-hidden="true">04</span>
-                                <span class="label-text">Design</span>
-                                <span class="label-line" aria-hidden="true"></span>
-                            </li>
-                        </ol>
+        <div class="observation-tabs" aria-label="Observation stages">
+          <button type="button" data-mobile-target="examine" class="is-active">01 Observe</button>
+          <button type="button" data-mobile-target="detail">02 Focus</button>
+          <button type="button" data-mobile-target="pattern">03 Discover</button>
+          <button type="button" data-mobile-target="structure">04 Structure</button>
+        </div>
+      </div>
 
-                        <!-- 오른쪽 아래 슬로건 -->
-                        <p class="visual-slogan">
-                            <span class="slogan-line" aria-hidden="true"></span>
-                            <span class="slogan-text">
-                                <span>CLEARER</span>
-                                <span>SIMPLER</span>
-                                <span>MORE HUMAN</span>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+      <p class="scroll-hint" aria-hidden="true">SCROLL TO EXPLORE</p>
+    </section>
 
-        <!-- 추후 Selected Works / About / Contact 섹션을 이곳에 추가합니다. -->
-    </main>
+    <!-- =========================================================
+         BRIDGE — based on Figma node 163:68
+         ========================================================= -->
+    <section class="bridge" data-bridge aria-labelledby="bridge-title">
+      <div class="bridge-image-wrap" data-bridge-target>
+        <img src="./images/hero-final.jpg" alt="Structured design result" />
+      </div>
 
-    <!-- GSAP -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+      <div class="bridge-copy">
+        <div class="section-label">
+          <span class="section-line" aria-hidden="true"></span>
+          <span>FROM OBSERVATION TO EXPERIENCE</span>
+        </div>
 
-    <!-- Hero GSAP -->
-    <script src="./js/hero.js"></script>
+        <h2 id="bridge-title">I look closely before I design.</h2>
+
+        <p>
+          I observe behavior, question assumptions and bring structure
+          to complexity.
+        </p>
+      </div>
+    </section>
+
+    <!-- The following sections are structural placeholders only.
+         They let navigation and scroll behaviour work while the
+         detailed layouts are still being designed. -->
+    <section id="work" class="placeholder-section">
+      <p class="eyebrow">SELECTED WORK</p>
+      <h2>Selected projects will continue here.</h2>
+    </section>
+
+    <section id="skill" class="placeholder-section">
+      <p class="eyebrow">HOW I WORK</p>
+      <h2>Analysis, structure and intentional interaction.</h2>
+    </section>
+
+    <section id="about" class="placeholder-section">
+      <p class="eyebrow">ABOUT</p>
+      <h2>About section.</h2>
+    </section>
+
+    <section id="contact" class="placeholder-section">
+      <p class="eyebrow">CONTACT</p>
+      <h2>Let’s connect.</h2>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="./script.js"></script>
 </body>
-
 </html>

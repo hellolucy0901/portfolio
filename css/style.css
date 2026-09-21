@@ -1,1112 +1,708 @@
-/* =========================================================
-   FONT
-========================================================= */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Inter:wght@300;400;500&display=swap");
-
-
-/* =========================================================
-   DESIGN TOKENS
-========================================================= */
 :root {
-    /* Background */
-    --bg-primary: #EFECE7;
-    --bg-secondary: #E3DFDA;
-    --surface-soft: #D6D1CB;
+  --bg-primary: #efece7;
+  --bg-secondary: #e3dfda;
+  --surface-soft: #d6d1cb;
+  --border: #c8c3bd;
+  --text-secondary: #827e79;
+  --text-primary: #302e28;
+  --text-inverse: #efece7;
 
-    /* Border */
-    --border-default: #C8C3BD;
-
-    /* Text */
-    --text-primary: #302E28;
-    --text-secondary: #827E79;
-    --text-inverse: #EFECE7;
-
-    /* Overlay */
-    --overlay-light: rgba(239, 236, 231, 0.24);
-    --overlay-dark: rgba(48, 46, 40, 0.10);
-
-    /* Font */
-    --font-display: "Cormorant Garamond", serif;
-    --font-body: "Inter", sans-serif;
+  --header-h: 88px;
+  --side: clamp(24px, 4.375vw, 84px);
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    width: 100%;
-    min-width: 320px;
-
-    background: var(--bg-primary);
-    color: var(--text-primary);
-
-    font-family: var(--font-body);
-
-    overflow-x: hidden;
-
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
+  margin: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
 }
 
+button,
 a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul,
-ol {
-    list-style: none;
-}
-
-button {
-    margin: 0;
-    padding: 0;
-
-    border: 0;
-    outline: 0;
-    background: none;
-
-    color: inherit;
-    font: inherit;
+  color: inherit;
 }
 
 img {
-    display: block;
-    width: 100%;
-    height: 100%;
-
-    user-select: none;
-    -webkit-user-drag: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-
-/* =========================================================
-   HEADER
-========================================================= */
 .site-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    z-index: 100;
-
-    width: 100%;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  height: var(--header-h);
+  padding: 0 var(--side);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  mix-blend-mode: difference;
+  color: var(--text-inverse);
+  pointer-events: none;
 }
 
-.header-inner {
-    position: relative;
-
-    width: 100%;
-    height: 112px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 60px;
+.site-header a {
+  pointer-events: auto;
 }
 
-
-/* logo */
-.site-logo {
-    position: relative;
-    z-index: 2;
-
-    font-family: var(--font-body);
-    font-size: 15px;
-    font-weight: 500;
-
-    letter-spacing: 0.16em;
-
-    white-space: nowrap;
+.brand {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-decoration: none;
 }
 
-
-/* 중앙 navigation */
 .main-nav {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
+  display: flex;
+  gap: 32px;
 }
 
-.nav-list {
-    display: flex;
-    align-items: center;
-
-    gap: 78px;
+.main-nav a {
+  position: relative;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-decoration: none;
 }
 
-.nav-list a {
-    position: relative;
-
-    display: inline-block;
-
-    padding: 8px 0;
-
-    font-size: 12px;
-    font-weight: 400;
-
-    letter-spacing: -0.02em;
-
-    transition: opacity 0.25s ease;
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -6px;
+  height: 1px;
+  background: currentColor;
+  transition: right .3s var(--ease-out);
 }
 
-.nav-list a:hover {
-    opacity: 0.48;
+.main-nav a:hover::after,
+.main-nav a:focus-visible::after {
+  right: 0;
 }
 
-
-/* 우측 Sound / BGM */
-.header-utils {
-    margin-left: auto;
-
-    display: flex;
-    align-items: center;
-
-    gap: 28px;
-}
-
-.header-utils button {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--text-secondary);
-
-    font-family: var(--font-body);
-    font-size: 10px;
-    font-weight: 300;
-
-    letter-spacing: 0.01em;
-
-    opacity: 1;
-
-    cursor: default;
-
-    -webkit-text-fill-color: var(--text-secondary);
-}
-
-.sound-toggle::after,
-.bgm-toggle::after {
-    content: "ON";
-
-    color: var(--text-primary);
-
-    font-size: 8px;
-    letter-spacing: 0.08em;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
+/* HERO */
 .hero {
-    position: relative;
-
-    width: 100%;
-    height: 100vh;
-    min-height: 820px;
-
-    background: var(--bg-primary);
-
-    overflow: hidden;
+  position: relative;
+  min-height: 100svh;
+  padding: calc(var(--header-h) + 34px) var(--side) 56px;
+  display: grid;
+  grid-template-columns: minmax(280px, .72fr) minmax(720px, 1.55fr);
+  align-items: center;
+  gap: clamp(40px, 4vw, 80px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 80% 15%, rgba(255,255,255,.28), transparent 34%),
+    var(--bg-primary);
 }
 
-.hero-inner {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
+.hero-copy {
+  position: relative;
+  z-index: 4;
+  align-self: center;
+  max-width: 610px;
 }
 
-
-/* =========================================================
-   HERO LEFT CONTENT
-========================================================= */
-.hero-content {
-    position: absolute;
-
-    /*
-       1920 기준 약 60px
-    */
-    left: 3.125vw;
-
-    /*
-       캡처 기준 UX/UI DESIGNER 위치
-    */
-    top: 24%;
-
-    z-index: 20;
-
-    width: 610px;
+.eyebrow {
+  margin: 0 0 24px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .25em;
 }
 
-
-/* UX / UI DESIGNER */
-.hero-eyebrow {
-    display: flex;
-    align-items: center;
-
-    gap: 40px;
-
-    color: var(--text-secondary);
-
-    font-size: 10px;
-    font-weight: 300;
-
-    letter-spacing: 0.28em;
+.hero h1 {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(48px, 4.4vw, 84px);
+  font-weight: 500;
+  line-height: .98;
+  letter-spacing: -.035em;
 }
 
-.eyebrow-line {
+.hero-subcopy {
+  margin: 32px 0 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  letter-spacing: .08em;
+}
+
+.hero-stage {
+  position: relative;
+  width: min(100%, 980px);
+  aspect-ratio: 1.38;
+  justify-self: end;
+}
+
+.visual {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface-soft);
+  box-shadow: 0 18px 60px rgba(48, 46, 40, .07);
+  transition:
+    transform .45s var(--ease-out),
+    opacity .45s var(--ease-out),
+    filter .45s var(--ease-out);
+}
+
+.visual figcaption {
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+  padding: 5px 7px;
+  background: rgba(239,236,231,.85);
+  color: var(--text-primary);
+  font-size: 9px;
+  letter-spacing: .14em;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: .3s ease;
+}
+
+.visual:hover figcaption,
+.visual.is-active figcaption {
+  opacity: 1;
+  transform: none;
+}
+
+.visual-main {
+  z-index: 4;
+  width: 45%;
+  height: 82%;
+  left: 27%;
+  top: 9%;
+}
+
+.visual-circle {
+  z-index: 7;
+  width: 24%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  right: 0;
+  top: 3%;
+}
+
+.visual-blur {
+  z-index: 2;
+  width: 18%;
+  height: 34%;
+  left: 2%;
+  top: 10%;
+}
+
+.visual-detail {
+  z-index: 5;
+  width: 18%;
+  height: 31%;
+  left: 5%;
+  bottom: 4%;
+}
+
+.visual-pattern {
+  z-index: 3;
+  width: 27%;
+  height: 37%;
+  right: 3%;
+  bottom: 4%;
+}
+
+.visual-final {
+  z-index: 8;
+  width: 16%;
+  aspect-ratio: 1;
+  right: 19%;
+  top: 39%;
+}
+
+.visual.is-dimmed {
+  opacity: .24;
+  filter: saturate(.5);
+}
+
+.visual.is-active {
+  transform: scale(1.045);
+  z-index: 12;
+}
+
+.hotspot {
+  position: absolute;
+  z-index: 15;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid rgba(239,236,231,.9);
+  background: rgba(48,46,40,.14);
+  cursor: pointer;
+  transition: .25s ease;
+}
+
+.hotspot::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(239,236,231,.95);
+}
+
+.hotspot:hover,
+.hotspot:focus-visible,
+.hotspot.is-active {
+  background: rgba(239,236,231,.28);
+  transform: scale(1.08);
+  outline: none;
+}
+
+.hotspot-a {
+  left: 52%;
+  top: 31%;
+}
+
+.hotspot-b {
+  left: 42%;
+  top: 65%;
+}
+
+.connector {
+  position: absolute;
+  z-index: 10;
+  height: 1px;
+  background: rgba(48,46,40,.36);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.connector-a {
+  width: 27%;
+  left: 54%;
+  top: 33%;
+  transform: rotate(-20deg);
+}
+
+.connector-b {
+  width: 28%;
+  left: 17%;
+  top: 70%;
+  transform: rotate(-9deg);
+}
+
+.magnifier {
+  position: absolute;
+  z-index: 20;
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  border: 1px solid rgba(239,236,231,.92);
+  box-shadow:
+    0 0 0 1px rgba(48,46,40,.12),
+    0 16px 40px rgba(48,46,40,.16);
+  background-image: url("./images/hero-main.jpg");
+  background-repeat: no-repeat;
+  background-size: 880px auto;
+  left: 54%;
+  top: 43%;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  touch-action: none;
+}
+
+.magnifier:active {
+  cursor: grabbing;
+}
+
+.scroll-hint {
+  position: absolute;
+  left: var(--side);
+  bottom: 26px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 9px;
+  letter-spacing: .2em;
+}
+
+/* INTRO OVERLAY */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #171715;
+  pointer-events: none;
+}
+
+.butterfly {
+  position: relative;
+  width: 180px;
+  height: 140px;
+  transform-style: preserve-3d;
+}
+
+.wing {
+  position: absolute;
+  top: 6px;
+  width: 96px;
+  height: 128px;
+  background-image: url("./images/hero-main.jpg");
+  background-size: 430px auto;
+  background-repeat: no-repeat;
+  border-radius: 80% 22% 78% 40%;
+  filter: saturate(.78) contrast(1.08);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.wing-left {
+  left: 0;
+  background-position: 36% 48%;
+  transform-origin: 100% 52%;
+}
+
+.wing-right {
+  right: 0;
+  background-position: 63% 48%;
+  transform: scaleX(-1);
+  transform-origin: 0 52%;
+}
+
+/* BRIDGE */
+.bridge {
+  position: relative;
+  min-height: 720px;
+  padding: 73px max(var(--side), 4.37vw);
+  display: grid;
+  grid-template-columns: minmax(0, 764px) minmax(520px, 799px);
+  column-gap: 54px;
+  align-items: center;
+  background:
+    linear-gradient(95.47deg, rgba(48,46,40,.016), rgba(239,236,231,.05) 81.25%),
+    rgba(239,236,231,.24);
+}
+
+.bridge-image-wrap {
+  width: 100%;
+  aspect-ratio: 764 / 574;
+  overflow: hidden;
+}
+
+.bridge-copy {
+  align-self: center;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  margin-bottom: 60px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .28em;
+}
+
+.section-line {
+  width: 60px;
+  height: 1px;
+  background: currentColor;
+}
+
+.bridge h2 {
+  max-width: 800px;
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(70px, 5.2vw, 100px);
+  font-weight: 500;
+  line-height: .92;
+  letter-spacing: -.015em;
+  color: #000;
+}
+
+.bridge-copy > p {
+  max-width: 786px;
+  margin: 52px 0 0;
+  color: #6a6a6a;
+  font-size: clamp(20px, 1.45vw, 28px);
+  line-height: 1.5;
+  letter-spacing: -.011em;
+}
+
+/* Placeholder sections */
+.placeholder-section {
+  min-height: 72vh;
+  padding: 160px var(--side);
+  border-top: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.placeholder-section:nth-of-type(even) {
+  background: var(--bg-secondary);
+}
+
+.placeholder-section h2 {
+  max-width: 1000px;
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(56px, 7vw, 120px);
+  font-weight: 500;
+  line-height: .95;
+}
+
+/* <= 1279 */
+@media (max-width: 1279px) {
+  :root {
+    --header-h: 60px;
+  }
+
+  .hero {
+    grid-template-columns: .78fr 1.22fr;
+    gap: 32px;
+  }
+
+  .hero-stage {
+    min-width: 650px;
+  }
+
+  .main-nav {
+    gap: 22px;
+  }
+
+  .bridge {
+    grid-template-columns: 1fr 1fr;
+    min-height: 660px;
+  }
+
+  .section-label {
+    gap: 22px;
+    letter-spacing: .18em;
+  }
+}
+
+/* MOBILE <= 767 */
+@media (max-width: 767px) {
+  :root {
+    --header-h: 50px;
+    --side: 20px;
+  }
+
+  .site-header {
+    padding-inline: 20px;
+  }
+
+  .main-nav a:nth-child(2),
+  .main-nav a:nth-child(3) {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 96px;
+    padding-bottom: 80px;
     display: block;
+  }
 
-    width: 52px;
-    height: 1px;
+  .hero-copy {
+    max-width: none;
+  }
 
-    background: var(--text-secondary);
-}
+  .hero h1 {
+    font-size: clamp(44px, 13vw, 68px);
+  }
 
+  .hero-subcopy {
+    margin-top: 20px;
+  }
 
-/* =========================================================
-   HERO TITLE
-========================================================= */
-.hero-title {
-    margin-top: 128px;
+  .hero-stage {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: auto;
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 
-    font-family: var(--font-display);
+  .visual {
+    position: relative;
+    inset: auto !important;
+    width: auto !important;
+    height: auto !important;
+    aspect-ratio: auto;
+    box-shadow: none;
+  }
 
-    font-size: 72px;
-    font-weight: 400;
+  .visual-main {
+    order: 1;
+    height: min(124vw, 590px) !important;
+  }
 
-    line-height: 0.88;
+  .visual-circle,
+  .visual-blur,
+  .visual-detail,
+  .visual-pattern,
+  .visual-final {
+    display: none;
+  }
 
-    letter-spacing: -0.02em;
+  .hotspot {
+    z-index: 25;
+    width: 44px;
+    height: 44px;
+  }
 
-    color: var(--text-primary);
-}
+  .hotspot-a {
+    left: 59%;
+    top: 37%;
+  }
 
-.hero-title span {
-    display: inline-block;
-}
+  .hotspot-b {
+    left: 39%;
+    top: 64%;
+  }
 
+  .connector {
+    display: none;
+  }
 
-/* =========================================================
-   HERO DESCRIPTION
-========================================================= */
-.hero-description {
-    margin-top: 42px;
+  .magnifier {
+    z-index: 26;
+    width: 112px;
+    height: 112px;
+    left: 61%;
+    top: 48%;
+    background-size: 760px auto;
+  }
 
-    max-width: 510px;
+  .mobile-observation {
+    order: 2;
+    display: grid;
+    grid-template-columns: 116px 1fr;
+    gap: 16px;
+    align-items: center;
+    min-height: 116px;
+    padding: 12px;
+    background: var(--bg-secondary);
+  }
 
+  .mobile-observation img {
+    width: 116px;
+    height: 116px;
+  }
+
+  .mobile-observation strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: .16em;
+  }
+
+  .mobile-observation span {
     color: var(--text-secondary);
-
-    font-size: 16px;
-    font-weight: 300;
-
+    font-size: 13px;
     line-height: 1.55;
+  }
 
-    letter-spacing: -0.025em;
-}
+  .observation-tabs {
+    order: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
 
+  .observation-tabs button {
+    min-height: 44px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font: inherit;
+    font-size: 11px;
+    letter-spacing: .06em;
+  }
 
-/* =========================================================
-   HERO CTA
-========================================================= */
-.hero-cta {
-    margin-top: 65px;
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 38px;
-}
-
-.hero-cta-icon {
-    width: 80px;
-    height: 80px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    flex-shrink: 0;
-
-    border-radius: 50%;
-
+  .observation-tabs button.is-active {
     background: var(--text-primary);
     color: var(--text-inverse);
+  }
 
-    transition:
-        transform 0.35s ease,
-        background-color 0.35s ease;
-}
-
-.hero-cta-icon svg {
-    width: 22px;
-    height: 22px;
-}
-
-.hero-cta-text {
-    font-size: 16px;
-    font-weight: 500;
-
-    letter-spacing: -0.02em;
-}
-
-.hero-cta:hover .hero-cta-icon {
-    transform: translateX(5px);
-}
-
-
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-/*
-현재 collage는 hero 화면 전체를 기준으로 배치합니다.
-
-이 방식을 사용하면
-GSAP 작업할 때 각 이미지의 absolute 좌표를
-그대로 animate하기 좋습니다.
-*/
-.hero-visual {
-    position: absolute;
-    inset: 0;
-
-    z-index: 5;
-
-    pointer-events: none;
-}
-
-.visual-group {
-    position: absolute;
-    inset: 0;
-
-    width: 100%;
-    height: 100%;
-}
-
-
-/* =========================================================
-   BACKGROUND PANELS
-========================================================= */
-.visual-panel {
-    position: absolute;
-
-    z-index: 0;
-
-    background: var(--bg-secondary);
-
-    pointer-events: none;
-}
-
-
-/*
-중앙 이미지 뒤쪽 상단 사각형
-*/
-.panel-01 {
-    left: 56.75%;
-    top: 12.4%;
-
-    width: 19.7%;
-    height: 28.3%;
-
-    opacity: 0.62;
-}
-
-
-/*
-오른쪽 이미지 뒤쪽 사각형
-*/
-.panel-02 {
-    left: 76%;
-    top: 40.5%;
-
-    width: 14.2%;
-    height: 21.1%;
-
-    opacity: 0.58;
-}
-
-
-/* =========================================================
-   IMAGE CARD COMMON
-========================================================= */
-.visual-card {
-    position: absolute;
-
-    display: block;
-
-    z-index: 3;
-
-    overflow: visible;
-
-    cursor: pointer;
-
-    pointer-events: auto;
-}
-
-.card-media {
-    position: absolute;
-    inset: 0;
-
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.6s ease;
-}
-
-/* 카드 자체는 위로만 살짝 떠오름 */
-.visual-card .card-media {
-    transition:
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.6s ease;
-}
-
-.visual-card:hover .card-media {
-    transform: translateY(-3px);
-
-    box-shadow:
-        0 8px 18px rgba(48, 46, 40, 0.06),
-        0 20px 40px rgba(48, 46, 40, 0.05);
-}
-
-
-/* 이미지 확대는 아주 약하게 */
-.card-image {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-
-    transform: scale(1);
-
-    transition:
-        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.visual-card:hover .card-image {
-    transform: scale(1.012);
-}
-
-
-
-/* =========================================================
-   CARD 01
-   중앙 대형 Flower
-========================================================= */
-.card-01 {
-    left: 50.5%;
-    top: 14.5%;
-    width: 25.5%;
-    height: 59%;
-
-    z-index: 2;
-}
-
-.card-01 .card-image {
-    object-position: 50% 50%;
-}
-
-
-/* =========================================================
-   CARD 02
-   왼쪽 Shadow
-========================================================= */
-.card-02 {
-    left: 42.2%;
-    top: 30.4%;
-
-    width: 9.75%;
-    height: 21.6%;
-
-    z-index: 5;
-}
-
-.card-02 .card-image {
-    object-position: center;
-}
-
-
-/* =========================================================
-   CARD 03
-   Circle Examine
-========================================================= */
-.card-03 {
-    left: 72.15%;
-    top: 21.4%;
-
-    width: 14.7%;
-
-    aspect-ratio: 1 / 1;
-
-    z-index: 8;
-}
-
-.card-03 .card-media {
-    border-radius: 50%;
-
-    border: 1px solid rgba(48, 46, 40, 0.34);
-}
-
-
-/* 바깥 원형 라인 */
-.card-03::after {
-    content: "";
-
-    position: absolute;
-
-    inset: -7px;
-
-    border: 1px solid rgba(48, 46, 40, 0.18);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-.card-03 .card-image {
-    object-position: 50% 50%;
-}
-
-
-/* =========================================================
-   CARD 04
-   왼쪽 아래 Leaf
-========================================================= */
-.card-04 {
-    left: 42.2%;
-    top: 60.6%;
-
-    width: 13.1%;
-
-    aspect-ratio: 1 / 1;
-
-    z-index: 9;
-}
-
-.card-04 .card-image {
-    object-position: center;
-}
-
-
-/* =========================================================
-   CARD 05
-   오른쪽 아래 Wide Leaf
-========================================================= */
-.card-05 {
-    left: 67.5%;
-    top: 54.7%;
-
-    width: 16.65%;
-    height: 26.9%;
-
-    z-index: 7;
-}
-
-.card-05 .card-image {
-    object-position: center;
-}
-
-
-/* =========================================================
-   CARD 06
-   오른쪽 Plant Shadow
-========================================================= */
-.card-06 {
-    left: 82.75%;
-    top: 61.5%;
-
-    width: 9.05%;
-
-    aspect-ratio: 1 / 1;
-
-    z-index: 10;
-}
-
-.card-06 .card-image {
-    object-position: center;
-}
-
-
-/* =========================================================
-   FOCUS FRAME
-   추후 JS / GSAP interaction용
-========================================================= */
-.focus-frame {
-    position: absolute;
-
-    inset: -8px;
-
-    z-index: 20;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    transition: opacity 0.3s ease;
-}
-
-.visual-card:hover .focus-frame {
-    opacity: 1;
-}
-
-
-/*
-원형 이미지는 기존 circle line 자체가
-focus 역할을 하므로 corner frame 제거
-*/
-.card-circle .focus-frame {
+  .scroll-hint {
     display: none;
-}
+  }
 
-
-.focus-corner {
-    position: absolute;
-
-    width: 12px;
-    height: 12px;
-}
-
-
-/* 좌상단 */
-.focus-corner.top-left {
-    top: 0;
-    left: 0;
-
-    border-top: 1px solid var(--text-primary);
-    border-left: 1px solid var(--text-primary);
-}
-
-
-/* 우상단 */
-.focus-corner.top-right {
-    top: 0;
-    right: 0;
-
-    border-top: 1px solid var(--text-primary);
-    border-right: 1px solid var(--text-primary);
-}
-
-
-/* 좌하단 */
-.focus-corner.bottom-left {
-    bottom: 0;
-    left: 0;
-
-    border-bottom: 1px solid var(--text-primary);
-    border-left: 1px solid var(--text-primary);
-}
-
-
-/* 우하단 */
-.focus-corner.bottom-right {
-    right: 0;
-    bottom: 0;
-
-    border-right: 1px solid var(--text-primary);
-    border-bottom: 1px solid var(--text-primary);
-}
-
-
-/* =========================================================
-   VISUAL LABEL
-========================================================= */
-
-.visual-labels {
-    position: absolute;
-    inset: 0;
-
-    z-index: 20;
-
-    pointer-events: none;
-}
-
-.visual-label {
-    position: absolute;
-
-    color: var(--text-primary);
-
-    font-family: var(--font-display);
-
-    line-height: 1;
-}
-
-/* =========================================
-   LABEL LINE
-   01 Identify 기준으로 완전히 통일
-========================================= */
-
-.visual-label .label-line {
-    position: absolute;
+  .bridge {
+    min-height: auto;
+    padding: 64px 20px 96px;
     display: block;
+  }
 
-    /* 모든 선 동일 */
-    width: 34px;
-    height: 1px;
+  .bridge-image-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
 
-    background: var(--text-secondary);
-    opacity: 0.9;
+  .bridge-copy {
+    margin-top: 48px;
+  }
+
+  .section-label {
+    margin-bottom: 36px;
+    gap: 16px;
+    font-size: 10px;
+    letter-spacing: .17em;
+  }
+
+  .section-line {
+    width: 32px;
+  }
+
+  .bridge h2 {
+    font-size: clamp(56px, 17vw, 82px);
+  }
+
+  .bridge-copy > p {
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .placeholder-section {
+    min-height: 60vh;
+    padding: 100px 20px;
+  }
 }
 
-
-/* -------------------------
-   01 Identify
-------------------------- */
-.label-01 .label-line {
-    left: 42px;
-    top: 43px;
-
-    transform: rotate(42deg);
-    transform-origin: left center;
+@media (min-width: 768px) {
+  .mobile-observation,
+  .observation-tabs {
+    display: none;
+  }
 }
 
-
-/* -------------------------
-   02 Examine
-   01의 좌우 반전
-------------------------- */
-.label-02 .label-line {
-    right: calc(100% + 14px);
-    top: 22px;
-
-    transform: rotate(-42deg);
-    transform-origin: right center;
-}
-
-
-/* -------------------------
-   03 Organize
-   01의 좌우 반전
-------------------------- */
-.label-03 .label-line {
-    right: calc(100% + 14px);
-    top: 22px;
-
-    transform: rotate(-42deg);
-    transform-origin: right center;
-}
-
-
-/* -------------------------
-   04 Design
-------------------------- */
-.label-04 .label-line {
-    right: calc(100% + 14px);
-    top: -8px;
-
-    transform: rotate(42deg);
-    transform-origin: right center;
-}
-
-.label-text {
-    display: block;
-
-    font-family: var(--font-display);
-
-    font-size: 19px;
-    font-weight: 500;
-
-    line-height: 1.08;
-
-    color: #3A3731;
-
-    /* 기존 -0.01em → 조금 넓게 */
-    letter-spacing: 0.015em;
-
-    text-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.35);
-
-    animation: labelBlink 5s infinite;
-}
-
-
-/* 아주 짧게 한 번 깜박임 */
-@keyframes labelBlink {
-
-    0%,
-    92%,
-    100% {
-        opacity: 1;
-    }
-
-    94% {
-        opacity: 0.45;
-    }
-
-    96% {
-        opacity: 1;
-    }
-}
-
-
-/* =========================================================
-   01 IDENTIFY
-========================================================= */
-.label-01 {
-    left: 37.8%;
-    top: 26.2%;
-}
-
-
-/* =========================================================
-   02 EXAMINE
-========================================================= */
-.label-02 {
-    left: 89.6%;
-    top: 25.3%;
-}
-
-.label-02 .label-line {
-    position: absolute;
-
-    right: calc(100% + 18px);
-    top: 26px;
-
-    width: 54px;
-    height: 1px;
-
-    background: var(--text-secondary);
-}
-
-
-/* =========================================================
-   03 ORGANIZE
-========================================================= */
-.label-03 {
-    left: 92.1%;
-    top: 52%;
-
-    white-space: nowrap;
-}
-
-.label-03 .label-line {
-    position: absolute;
-
-    right: calc(100% + 18px);
-    top: 25px;
-
-    width: 45px;
-    height: 1px;
-
-    background: var(--text-secondary);
-}
-
-
-/* =========================================================
-   04 DESIGN
-========================================================= */
-.label-04 {
-    left: 68.4%;
-    top: 85.6%;
-}
-
-.label-04 .label-line {
-    position: absolute;
-
-    right: calc(100% + 20px);
-    top: -16px;
-
-    width: 51px;
-    height: 1px;
-
-    background: var(--text-secondary);
-
-    transform: rotate(32deg);
-    transform-origin: right center;
-}
-
-
-/* =========================================================
-   BOTTOM RIGHT SLOGAN
-========================================================= */
-.visual-slogan {
-    position: absolute;
-
-    left: 84.55%;
-    top: 87.3%;
-
-    z-index: 20;
-
-    display: flex;
-    align-items: flex-start;
-
-    gap: 46px;
-
-    pointer-events: none;
-}
-
-.slogan-line {
-    display: block;
-
-    width: 1px;
-    height: 72px;
-
-    background: var(--text-secondary);
-}
-
-.slogan-text {
-    display: flex;
-    flex-direction: column;
-
-    gap: 9px;
-
-    padding-top: 2px;
-
-    color: #9A9690;
-
-    font-family: var(--font-body);
-
-    font-size: 9px;
-    font-weight: 400;
-
-    line-height: 1;
-
-    letter-spacing: 0.28em;
-}
-
-
-/* =========================================================
-   LARGE DESKTOP
-   1600 ~ 1920
-========================================================= */
-@media (min-width: 1600px) {
-
-    .header-inner {
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-}
-
-
-/* =========================================================
-   DESKTOP / LAPTOP
-========================================================= */
-@media (max-width: 1599px) {
-
-    .hero-content {
-        left: 3.2%;
-    }
-
-    .hero-title {
-        font-size: clamp(58px, 4.2vw, 72px);
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-cta-icon {
-        width: 68px;
-        height: 68px;
-    }
-
-    .nav-list {
-        gap: 60px;
-    }
-}
-
-/* =========================================================
-   1280 이하 안전 대응
-   본격적인 tablet/mobile 디자인 전 임시 breakpoint
-========================================================= */
-@media (max-width: 1279px) {
-
-    .header-inner {
-        height: 88px;
-        padding: 0 32px;
-    }
-
-    .site-logo {
-        font-size: 13px;
-    }
-
-    .nav-list {
-        gap: 40px;
-    }
-
-    .header-utils {
-        gap: 16px;
-    }
-
-    .hero {
-        min-height: 720px;
-    }
-
-    .hero-content {
-        top: 23%;
-    }
-
-    .hero-title {
-        margin-top: 90px;
-
-        font-size: 54px;
-    }
-
-    .hero-description {
-        margin-top: 30px;
-
-        max-width: 400px;
-
-        font-size: 14px;
-    }
-
-    .hero-cta {
-        margin-top: 45px;
-
-        gap: 24px;
-    }
-
-    .hero-cta-icon {
-        width: 58px;
-        height: 58px;
-    }
-
-    .hero-cta-text {
-        font-size: 14px;
-    }
-
-    .label-text {
-        font-size: 14px;
-        font-weight: 900;
-    }
-
-    .label-number {
-        font-size: 9px;
-    }
-}
-
-
-/* =========================================================
-   ACCESSIBILITY
-========================================================= */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-    }
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .intro-overlay {
+    display: none;
+  }
 }
