@@ -13,7 +13,118 @@ gsap.registerPlugin(ScrollTrigger);
 const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
+/* =========================================================
+   HERO CANVAS RESPONSIVE SCALE
 
+   Figma master size
+   1920 × 1125
+========================================================= */
+
+const HERO_BASE_WIDTH = 1920;
+const HERO_BASE_HEIGHT = 1125;
+
+
+function fitHeroCanvas() {
+
+    const heroCanvas =
+        document.querySelector(".hero-canvas");
+
+
+    if (!heroCanvas) {
+        return;
+    }
+
+
+    /* ---------------------------------------------------------
+       모바일은 추후 별도 레이아웃 사용
+    --------------------------------------------------------- */
+
+    if (window.innerWidth <= 767) {
+
+        heroCanvas.style.transform = "";
+
+        heroCanvas.style.left = "";
+
+        heroCanvas.style.top = "";
+
+        return;
+    }
+
+
+    /* ---------------------------------------------------------
+       현재 실제 browser viewport
+    --------------------------------------------------------- */
+
+    const viewportWidth =
+        document.documentElement.clientWidth;
+
+
+    const viewportHeight =
+        window.innerHeight;
+
+
+    /* ---------------------------------------------------------
+       Figma master 대비 비율
+    --------------------------------------------------------- */
+
+    const widthScale =
+        viewportWidth / HERO_BASE_WIDTH;
+
+
+    const heightScale =
+        viewportHeight / HERO_BASE_HEIGHT;
+
+
+    /* ---------------------------------------------------------
+       가로 / 세로 둘 다 화면에 들어오도록
+       더 작은 scale 사용
+
+       Figma 원본보다 확대하지 않음
+    --------------------------------------------------------- */
+
+    const scale =
+        Math.min(
+            widthScale,
+            heightScale,
+            1
+        );
+
+
+    /* ---------------------------------------------------------
+       축소된 실제 canvas 크기
+    --------------------------------------------------------- */
+
+    const scaledWidth =
+        HERO_BASE_WIDTH * scale;
+
+
+    /* ---------------------------------------------------------
+       Canvas를 화면 가로 중앙에 배치
+    --------------------------------------------------------- */
+
+    const left =
+        Math.max(
+            0,
+            (viewportWidth - scaledWidth) / 2
+        );
+
+
+    /* ---------------------------------------------------------
+       적용
+    --------------------------------------------------------- */
+
+    heroCanvas.style.transform =
+        `scale(${scale})`;
+
+
+    heroCanvas.style.left =
+        `${left}px`;
+
+
+    heroCanvas.style.top =
+        "0px";
+
+}
 /* =========================================================
    HEADER AUDIO CONTROLS
 
@@ -1697,7 +1808,7 @@ window.addEventListener(
         resizeTimer = setTimeout(
 
             () => {
-
+                fitHeroCanvas();
                 ScrollTrigger.refresh();
 
             },
@@ -1718,6 +1829,10 @@ window.addEventListener(
 
 function initPortfolio() {
 
+    fitHeroCanvas();
+
+    initAudioControls();
+
     runIntro();
 
     buildHeroScrollAnimation();
@@ -1727,7 +1842,6 @@ function initPortfolio() {
     buildBridgeTextAnimation();
 
 }
-
 
 
 /* DOM 준비 후 시작 */
@@ -1760,6 +1874,8 @@ window.addEventListener(
     "load",
 
     () => {
+
+        fitHeroCanvas();
 
         ScrollTrigger.refresh();
 
