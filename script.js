@@ -14,6 +14,89 @@ const prefersReducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
 ).matches;
 
+/* =========================================================
+   HEADER AUDIO CONTROLS
+
+   Sound ON / OFF
+   BGM   ON / OFF
+========================================================= */
+
+function initAudioControls() {
+
+    const audioButtons =
+        document.querySelectorAll(
+            "[data-audio-toggle]"
+        );
+
+
+    audioButtons.forEach((button) => {
+
+        const stateText =
+            button.querySelector(
+                ".audio-toggle__state"
+            );
+
+
+        if (!stateText) {
+            return;
+        }
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                /* 현재 상태 */
+
+                const isOn =
+                    button.getAttribute(
+                        "aria-pressed"
+                    ) === "true";
+
+
+                /* 다음 상태 */
+
+                const nextState =
+                    !isOn;
+
+
+                /* 접근성 상태 변경 */
+
+                button.setAttribute(
+                    "aria-pressed",
+                    String(nextState)
+                );
+
+
+                /* 화면 텍스트 변경 */
+
+                stateText.textContent =
+                    nextState
+                        ? "ON"
+                        : "OFF";
+
+
+                /* 어떤 버튼인지 */
+
+                const audioType =
+                    button.dataset.audioToggle;
+
+
+                /* 개발 확인용 */
+
+                console.log(
+                    `${audioType}:`,
+                    nextState
+                        ? "ON"
+                        : "OFF"
+                );
+
+            }
+        );
+
+    });
+
+}
 
 /* Hero */
 const hero = document.querySelector(".hero");
@@ -1590,60 +1673,6 @@ function buildBridgeTextAnimation() {
 
 }
 
-
-
-/* =========================================================
-   9. NAVIGATION Smooth Scroll
-========================================================= */
-
-const navLinks =
-    document.querySelectorAll(
-        '.main-nav a[href^="#"]'
-    );
-
-
-navLinks.forEach((link) => {
-
-    link.addEventListener(
-
-        "click",
-
-        (event) => {
-
-            const targetId =
-                link.getAttribute("href");
-
-
-            const target =
-                document.querySelector(
-                    targetId
-                );
-
-
-            if (!target) {
-                return;
-            }
-
-
-            event.preventDefault();
-
-
-            target.scrollIntoView({
-
-                behavior:
-                    prefersReducedMotion
-                        ? "auto"
-                        : "smooth",
-
-                block: "start"
-
-            });
-
-        }
-
-    );
-
-});
 
 
 

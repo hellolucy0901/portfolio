@@ -1,180 +1,217 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucy — UX/UI Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lucy — UX/UI Portfolio</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link rel="stylesheet" href="./css/style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-<script src="./script.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
-  <header class="site-header">
-    <a class="brand" href="#intro" aria-label="Go to intro">LUCY.</a>
+    <header class="hero-header">
 
-    <nav class="main-nav" aria-label="Primary">
-      <a href="#work">WORK</a>
-      <a href="#skill">SKILL</a>
-      <a href="#about">ABOUT</a>
-      <a href="#contact">CONTACT</a>
-    </nav>
-  </header>
+        <p class="hero-header__name">
+            EUNYEM KO
+        </p>
 
-  <main>
-    <!-- =========================================================
+        <div class="hero-header__audio" aria-label="Audio controls">
+
+            <button type="button" class="audio-toggle" data-audio-toggle="sound" aria-pressed="true"
+                aria-label="Toggle sound">
+                <span class="audio-toggle__label">Sound</span>
+                <span class="audio-toggle__state">ON</span>
+            </button>
+
+            <span class="hero-header__divider" aria-hidden="true">|</span>
+
+            <button type="button" class="audio-toggle" data-audio-toggle="bgm" aria-pressed="true"
+                aria-label="Toggle background music">
+                <span class="audio-toggle__label">BGM</span>
+                <span class="audio-toggle__state">ON</span>
+            </button>
+
+        </div>
+
+    </header>
+
+    <main>
+        <!-- =========================================================
          HERO / OBSERVE → FOCUS → STRUCTURE
          Replace image files inside ./images with your final assets.
          ========================================================= -->
-    <section id="intro" class="hero" aria-labelledby="hero-title">
-      <div class="intro-overlay" aria-hidden="true">
-        <div class="butterfly" data-butterfly>
-          <span class="wing wing-left"></span>
-          <span class="wing wing-right"></span>
-        </div>
-      </div>
+        <section id="intro" class="hero" aria-labelledby="hero-title">
+            <div class="intro-overlay" aria-hidden="true">
+                <div class="butterfly" data-butterfly>
+                    <span class="wing wing-left"></span>
+                    <span class="wing wing-right"></span>
+                </div>
+            </div>
 
-      <div class="hero-copy">
-        <p class="eyebrow">UX/UI DESIGNER · FRONT-END</p>
-        <h1 id="hero-title">
-          I turn complex problems into clear experiences
-          through analysis, structure and thoughtful design.
-        </h1>
-        <p class="hero-subcopy">
-          Observe → Focus → Structure
-        </p>
-      </div>
+            <div class="hero-copy">
 
-      <div class="hero-stage" data-hero-stage>
-        <figure class="visual visual-main" data-visual="observe">
-          <img
-            src="./images/hero-main.jpg"
-            alt="Macro detail used as the main observation target"
-          />
-        </figure>
+                <div class="hero-section-label">
+                    <span class="hero-section-label__line" aria-hidden="true"></span>
 
-        <button
-          class="hotspot hotspot-a"
-          type="button"
-          data-target="examine"
-          aria-label="Examine selected detail"
-        ></button>
+                    <p class="hero-section-label__text">
+                        Product Design · UX/UI · Front-end
+                    </p>
+                </div>
 
-        <button
-          class="hotspot hotspot-b"
-          type="button"
-          data-target="detail"
-          aria-label="Notice selected texture"
-        ></button>
 
-        <div class="connector connector-a" aria-hidden="true"></div>
-        <div class="connector connector-b" aria-hidden="true"></div>
+                <h1 id="hero-title" class="hero-title">
+                    <span>See Clearly.</span>
+                    <span>Design Better.</span>
+                </h1>
 
-        <figure class="visual visual-circle" data-visual="examine">
-          <img src="./images/hero-examine.jpg" alt="Magnified wing texture" />
-          <figcaption>EXAMINE</figcaption>
-        </figure>
 
-        <figure class="visual visual-blur" data-visual="unclear">
-          <img src="./images/hero-blur.jpg" alt="Blurred, unresolved information" />
-          <figcaption>UNCLEAR</figcaption>
-        </figure>
+                <p class="hero-description">
+                    <span>I turn complex information and interactions</span>
+                    <span>into clear, intuitive experiences.</span>
+                </p>
 
-        <figure class="visual visual-detail" data-visual="detail">
-          <img src="./images/hero-detail.jpg" alt="Fine texture discovered through observation" />
-          <figcaption>NOTICE</figcaption>
-        </figure>
+            </div>
 
-        <figure class="visual visual-pattern" data-visual="pattern">
-          <img src="./images/hero-pattern.jpg" alt="Repeated pattern organized into structure" />
-          <figcaption>ORGANIZE</figcaption>
-        </figure>
+            <div class="hero-stage" data-hero-stage>
+                <figure class="visual visual-main" data-visual="observe">
+                    <img src="./images/hero-main.jpg" alt="Macro detail used as the main observation target" />
+                </figure>
 
-        <figure class="visual visual-final" data-visual="structure" data-final-tile>
-          <img src="./images/hero-final.jpg" alt="Geometric final structure" />
-          <figcaption>DESIGN</figcaption>
-        </figure>
+               
 
-        <div
-          class="magnifier"
-          data-magnifier
-          role="img"
-          aria-label="Drag to inspect the main image"
-        ></div>
+               
 
-        <div class="mobile-observation" data-mobile-observation aria-live="polite">
-          <img src="./images/hero-examine.jpg" alt="" />
-          <div>
-            <strong>EXAMINE</strong>
-            <span>Look closer before defining the problem.</span>
-          </div>
-        </div>
 
-        <div class="observation-tabs" aria-label="Observation stages">
-          <button type="button" data-mobile-target="examine" class="is-active">01 Observe</button>
-          <button type="button" data-mobile-target="detail">02 Focus</button>
-          <button type="button" data-mobile-target="pattern">03 Discover</button>
-          <button type="button" data-mobile-target="structure">04 Structure</button>
-        </div>
-      </div>
+                <figure class="visual visual-circle" data-visual="examine">
+                    <img src="./images/hero-examine.jpg" alt="Magnified wing texture" />
 
-      <p class="scroll-hint" aria-hidden="true">SCROLL TO EXPLORE</p>
-    </section>
+                </figure>
 
-    <!-- =========================================================
+                <figure class="visual visual-blur" data-visual="unclear">
+                    <img src="./images/hero-blur.jpg" alt="Blurred, unresolved information" />
+
+                </figure>
+
+                <figure class="visual visual-detail" data-visual="detail">
+                    <img src="./images/hero-detail.jpg" alt="Fine texture discovered through observation" />
+
+                </figure>
+
+                <figure class="visual visual-pattern" data-visual="pattern">
+                    <img src="./images/hero-pattern.jpg" alt="Repeated pattern organized into structure" />
+                </figure>
+
+                <figure class="visual visual-final" data-visual="structure" data-final-tile>
+                    <img src="./images/hero-final.jpg" alt="Geometric final structure" />
+                </figure>
+
+                <!-- =========================================================
+     HERO IMAGE LABELS
+     Figma: 200:398 / 200:399 / 200:401 / 200:403
+========================================================= -->
+
+                <div class="hero-visual-label hero-visual-label--observe">
+                    <span class="hero-visual-label__number">01</span>
+                    <span class="hero-visual-label__name">Observe</span>
+                </div>
+
+                <div class="hero-visual-label hero-visual-label--focus">
+                    <span class="hero-visual-label__number">02</span>
+                    <span class="hero-visual-label__name">Focus</span>
+                </div>
+
+                <div class="hero-visual-label hero-visual-label--discover">
+                    <span class="hero-visual-label__number">03</span>
+                    <span class="hero-visual-label__name">Discover</span>
+                </div>
+
+                <div class="hero-visual-label hero-visual-label--structure">
+                    <span class="hero-visual-label__number">04</span>
+                    <span class="hero-visual-label__name">Structure</span>
+                </div>
+
+
+                <div class="mobile-observation" data-mobile-observation aria-live="polite">
+                    <img src="./images/hero-examine.jpg" alt="" />
+                    <div>
+                        <strong>EXAMINE</strong>
+                        <span>Look closer before defining the problem.</span>
+                    </div>
+                </div>
+
+                <div class="observation-tabs" aria-label="Observation stages">
+                    <button type="button" data-mobile-target="examine" class="is-active">01 Observe</button>
+                    <button type="button" data-mobile-target="detail">02 Focus</button>
+                    <button type="button" data-mobile-target="pattern">03 Discover</button>
+                    <button type="button" data-mobile-target="structure">04 Structure</button>
+                </div>
+            </div>
+
+            <p class="scroll-hint" aria-hidden="true">SCROLL TO EXPLORE</p>
+        </section>
+
+        <!-- =========================================================
          BRIDGE — based on Figma node 163:68
          ========================================================= -->
-    <section class="bridge" data-bridge aria-labelledby="bridge-title">
-      <div class="bridge-image-wrap" data-bridge-target>
-        <img src="./images/hero-final.jpg" alt="Structured design result" />
-      </div>
+        <section class="bridge" data-bridge aria-labelledby="bridge-title">
+            <div class="bridge-image-wrap" data-bridge-target>
+                <img src="./images/hero-final.jpg" alt="Structured design result" />
+            </div>
 
-      <div class="bridge-copy">
-        <div class="section-label">
-          <span class="section-line" aria-hidden="true"></span>
-          <span>FROM OBSERVATION TO EXPERIENCE</span>
-        </div>
+            <div class="bridge-copy">
+                <div class="section-label">
+                    <span class="section-line" aria-hidden="true"></span>
+                    <span>FROM OBSERVATION TO EXPERIENCE</span>
+                </div>
 
-        <h2 id="bridge-title">I look closely before I design.</h2>
+                <h2 id="bridge-title">I look closely before I design.</h2>
 
-        <p>
-          I observe behavior, question assumptions and bring structure
-          to complexity.
-        </p>
-      </div>
-    </section>
+                <p>
+                    I observe behavior, question assumptions and bring structure
+                    to complexity.
+                </p>
+            </div>
+        </section>
 
-    <!-- The following sections are structural placeholders only.
+        <!-- The following sections are structural placeholders only.
          They let navigation and scroll behaviour work while the
          detailed layouts are still being designed. -->
-    <section id="work" class="placeholder-section">
-      <p class="eyebrow">SELECTED WORK</p>
-      <h2>Selected projects will continue here.</h2>
-    </section>
+        <section id="work" class="placeholder-section">
+            <p class="eyebrow">SELECTED WORK</p>
+            <h2>Selected projects will continue here.</h2>
+        </section>
 
-    <section id="skill" class="placeholder-section">
-      <p class="eyebrow">HOW I WORK</p>
-      <h2>Analysis, structure and intentional interaction.</h2>
-    </section>
+        <section id="skill" class="placeholder-section">
+            <p class="eyebrow">HOW I WORK</p>
+            <h2>Analysis, structure and intentional interaction.</h2>
+        </section>
 
-    <section id="about" class="placeholder-section">
-      <p class="eyebrow">ABOUT</p>
-      <h2>About section.</h2>
-    </section>
+        <section id="about" class="placeholder-section">
+            <p class="eyebrow">ABOUT</p>
+            <h2>About section.</h2>
+        </section>
 
-    <section id="contact" class="placeholder-section">
-      <p class="eyebrow">CONTACT</p>
-      <h2>Let’s connect.</h2>
-    </section>
-  </main>
+        <section id="contact" class="placeholder-section">
+            <p class="eyebrow">CONTACT</p>
+            <h2>Let’s connect.</h2>
+        </section>
+    </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./script.js"></script>
+
 </body>
+
+</html>
+</body>
+
 </html>

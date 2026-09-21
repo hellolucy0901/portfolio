@@ -39,97 +39,295 @@ img {
   height: 100%;
   object-fit: cover;
 }
+/* =========================================================
+   HERO HEADER
+   Figma node: 200:382
+========================================================= */
 
-.site-header {
-  position: fixed;
-  inset: 0 0 auto 0;
-  z-index: 50;
-  height: var(--header-h);
-  padding: 0 var(--side);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  mix-blend-mode: difference;
-  color: var(--text-inverse);
+.hero-header {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
   pointer-events: none;
 }
 
-.site-header a {
+
+/* ---------------------------------------------------------
+   EUNYEM KO
+
+   Figma:
+   x: 97
+   y: 47.5
+   font: Inter Medium
+   size: 22
+   line-height: 1.6
+   letter-spacing: 2.42
+--------------------------------------------------------- */
+
+.hero-header__name {
+  position: absolute;
+
+  top: 47.5px;
+  left: 97px;
+
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.6;
+  letter-spacing: 2.42px;
+
+  color: #302e28;
+
+  white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   SOUND / BGM
+
+   Figma:
+   x: 1674.326
+   y: 65
+   width: 143
+   right ≈ 102.674
+--------------------------------------------------------- */
+
+.hero-header__audio {
+  position: absolute;
+
+  top: 65px;
+  right: 102.67px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  height: 14px;
+
+  color: #615f5a;
+
+  white-space: nowrap;
+
   pointer-events: auto;
 }
 
-.brand {
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: .14em;
-  text-decoration: none;
-}
 
-.main-nav {
+/* Sound / BGM 버튼 */
+
+.audio-toggle {
   display: flex;
-  gap: 32px;
-}
-
-.main-nav a {
-  position: relative;
-  font-size: 12px;
-  letter-spacing: .16em;
-  text-decoration: none;
-}
-
-.main-nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 100%;
-  bottom: -6px;
-  height: 1px;
-  background: currentColor;
-  transition: right .3s var(--ease-out);
-}
-
-.main-nav a:hover::after,
-.main-nav a:focus-visible::after {
-  right: 0;
-}
-
-/* HERO */
-.hero {
-  position: relative;
-  min-height: 100svh;
-  padding: calc(var(--header-h) + 34px) var(--side) 56px;
-  display: grid;
-  grid-template-columns: minmax(280px, .72fr) minmax(720px, 1.55fr);
   align-items: center;
-  gap: clamp(40px, 4vw, 80px);
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  font-family: "Inter", sans-serif;
+}
+
+
+/* Sound / BGM */
+
+.audio-toggle__label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.14px;
+}
+
+
+/* ON / OFF */
+
+.audio-toggle__state {
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.1px;
+}
+
+
+/* 가운데 | */
+
+.hero-header__divider {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.14px;
+
+  color: #615f5a;
+}
+
+
+/* 키보드 접근성 */
+
+.audio-toggle:focus-visible {
+  outline: 1px solid #615f5a;
+  outline-offset: 4px;
+}
+
+/* HERO */.hero {
+  position: relative;
+
+  width: 100%;
+  height: 1125px;
+  min-height: 1125px;
+
+  padding: 0;
+
+  display: block;
+
   overflow: hidden;
+
   background:
-    radial-gradient(circle at 80% 15%, rgba(255,255,255,.28), transparent 34%),
+    radial-gradient(
+      circle at 80% 15%,
+      rgba(255, 255, 255, 0.28),
+      transparent 34%
+    ),
     var(--bg-primary);
 }
 
+/* =========================================================
+   HERO COPY
+   Figma node: 200:409
+========================================================= */
+
 .hero-copy {
-  position: relative;
-  z-index: 4;
-  align-self: center;
-  max-width: 610px;
+  position: absolute;
+
+  left: 104.5205px;
+  top: 359.0435px;
+
+  width: 631px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 61px;
+
+  z-index: 10;
 }
 
-.eyebrow {
-  margin: 0 0 24px;
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: .25em;
+
+/* =========================================================
+   SECTION LABEL
+
+   Product Design · UX/UI · Front-end
+========================================================= */
+
+.hero-section-label {
+  display: flex;
+  align-items: center;
+
+  gap: 36px;
+
+  height: 17px;
 }
 
-.hero h1 {
+
+/* 왼쪽 60px line */
+
+.hero-section-label__line {
+  display: block;
+
+  width: 60px;
+  height: 2px;
+
+  background-color: #827e79;
+
+  flex-shrink: 0;
+}
+
+
+.hero-section-label__text {
   margin: 0;
-  font-family: "Cormorant Garamond", serif;
-  font-size: clamp(48px, 4.4vw, 84px);
+
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
   font-weight: 500;
-  line-height: .98;
-  letter-spacing: -.035em;
+
+  line-height: 1.2;
+
+  letter-spacing: 3.92px;
+
+  color: #827e79;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HERO TITLE
+
+   See Clearly.
+   Design Better.
+========================================================= */
+
+.hero-title {
+  width: 631px;
+
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 120px;
+  font-weight: 500;
+
+  line-height: 0.88;
+
+  letter-spacing: -2.4px;
+
+  color: #302e28;
+}
+
+
+/* 각 줄을 정확하게 분리 */
+
+.hero-title span {
+  display: block;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+
+   I turn complex information and interactions
+   into clear, intuitive experiences.
+========================================================= */
+
+.hero-description {
+  margin: 0;
+
+  font-family: "Inter", sans-serif;
+
+  font-size: 28px;
+  font-weight: 400;
+
+  line-height: 1.5;
+
+  letter-spacing: -0.308px;
+
+  color: #6a6a6a;
+
+  white-space: nowrap;
+}
+
+
+.hero-description span {
+  display: block;
 }
 
 .hero-subcopy {
@@ -140,91 +338,320 @@ img {
 }
 
 .hero-stage {
-  position: relative;
-  width: min(100%, 980px);
-  aspect-ratio: 1.38;
-  justify-self: end;
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 1920px;
+  height: 1125px;
+
+  max-width: none;
+
+  aspect-ratio: auto;
 }
+/* =========================================================
+   HERO VISUAL COMMON
+   모든 Hero 이미지를 Figma 좌표값으로 배치하기 위한 공통 설정
+========================================================= */
 
 .visual {
   position: absolute;
+
   margin: 0;
+
   overflow: hidden;
+
   background: var(--surface-soft);
-  box-shadow: 0 18px 60px rgba(48, 46, 40, .07);
+
   transition:
-    transform .45s var(--ease-out),
-    opacity .45s var(--ease-out),
-    filter .45s var(--ease-out);
+    transform 0.45s var(--ease-out),
+    opacity 0.45s var(--ease-out),
+    filter 0.45s var(--ease-out);
 }
 
-.visual figcaption {
+.visual img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+/* =========================================================
+   HERO IMAGE LABELS
+
+   Figma:
+   200:398  01 Observe
+   200:399  02 Focus
+   200:401  03 Discover
+   200:403  04 Structure
+========================================================= */
+
+.hero-visual-label {
   position: absolute;
-  left: 10px;
-  bottom: 9px;
-  padding: 5px 7px;
-  background: rgba(239,236,231,.85);
-  color: var(--text-primary);
-  font-size: 9px;
-  letter-spacing: .14em;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: .3s ease;
+
+  z-index: 20;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  margin: 0;
+
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+
+  line-height: 1.2;
+
+  letter-spacing: -0.21px;
+
+  color: #302e28;
+
+  white-space: nowrap;
+
+  pointer-events: none;
 }
 
-.visual:hover figcaption,
-.visual.is-active figcaption {
-  opacity: 1;
-  transform: none;
+
+/* 숫자
+   Figma: 18px / SemiBold
+*/
+
+.hero-visual-label__number {
+  display: block;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  line-height: 1.2;
 }
+
+
+/* 이름
+   Figma: 20px / SemiBold
+*/
+
+.hero-visual-label__name {
+  display: block;
+
+  font-size: 20px;
+  font-weight: 600;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   01 OBSERVE
+   Figma node: 200:398
+
+   x: 884.7012
+   y: 171.4568
+   w: 64
+   h: 47
+========================================================= */
+
+.hero-visual-label--observe {
+  left: 884.7012px;
+  top: 171.4568px;
+
+  width: 64px;
+  height: 47px;
+}
+
+
+/* =========================================================
+   02 FOCUS
+   Figma node: 200:399
+
+   x: 1539.5967
+   y: 141.4568
+   w: 44
+   h: 47
+========================================================= */
+
+.hero-visual-label--focus {
+  left: 1539.5967px;
+  top: 141.4568px;
+
+  width: 44px;
+  height: 47px;
+}
+
+
+/* =========================================================
+   03 DISCOVER
+   Figma node: 200:401
+
+   x: 1605.2676
+   y: 687.3213
+   w: 67
+   h: 47
+========================================================= */
+
+.hero-visual-label--discover {
+  left: 1605.2676px;
+  top: 687.3213px;
+
+  width: 67px;
+  height: 47px;
+}
+
+
+/* =========================================================
+   04 STRUCTURE
+   Figma node: 200:403
+
+   x: 1721.6147
+   y: 969.2137
+   w: 73
+   h: 47
+========================================================= */
+
+.hero-visual-label--structure {
+  left: 1721.6147px;
+  top: 969.2137px;
+
+  width: 73px;
+  height: 47px;
+}
+
+/* =========================================================
+   HERO VISUAL POSITION
+   Figma master: 1920 × 1125
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   01. MAIN IMAGE
+   Figma node: 200:383
+
+   x: 1012.2986
+   y: 237.7255
+   w: 513.8545
+   h: 641.8428
+--------------------------------------------------------- */
 
 .visual-main {
-  z-index: 4;
-  width: 45%;
-  height: 82%;
-  left: 27%;
-  top: 9%;
+  z-index: 1;
+
+  left: 1012.2986px;
+  top: 237.7255px;
+
+  width: 513.8545px;
+  height: 641.8428px;
 }
 
-.visual-circle {
-  z-index: 7;
-  width: 24%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  right: 0;
-  top: 3%;
-}
+
+/* ---------------------------------------------------------
+   02. BLUR IMAGE
+   Figma node: 200:408
+
+   x: 842.0566
+   y: 409.3361
+   w: 204
+   h: 243
+--------------------------------------------------------- */
 
 .visual-blur {
-  z-index: 2;
-  width: 18%;
-  height: 34%;
-  left: 2%;
-  top: 10%;
+  z-index: 6;
+
+  left: 842.0566px;
+  top: 409.3361px;
+
+  width: 204px;
+  height: 243px;
 }
+
+
+/* ---------------------------------------------------------
+   03. DETAIL TEXTURE
+   Figma node: 200:405
+
+   x: 884.7012
+   y: 728.3213
+   w: 203
+   h: 197
+--------------------------------------------------------- */
 
 .visual-detail {
-  z-index: 5;
-  width: 18%;
-  height: 31%;
-  left: 5%;
-  bottom: 4%;
+  z-index: 3;
+
+  left: 884.7012px;
+  top: 728.3213px;
+
+  width: 203px;
+  height: 197px;
 }
+
+
+/* ---------------------------------------------------------
+   04. GEOMETRY / PATTERN
+   Figma node: 200:406
+
+   x: 1378.9961
+   y: 745.3910
+   w: 244.5361
+   h: 222.4741
+--------------------------------------------------------- */
 
 .visual-pattern {
-  z-index: 3;
-  width: 27%;
-  height: 37%;
-  right: 3%;
-  bottom: 4%;
+  z-index: 4;
+
+  left: 1378.9961px;
+  top: 745.391px;
+
+  width: 244.5361px;
+  height: 222.4741px;
 }
 
+
+/* ---------------------------------------------------------
+   05. FINAL DESIGN
+   Figma node: 200:407
+
+   x: 1638.7676
+   y: 800
+   w: 148
+   h: 147
+--------------------------------------------------------- */
+
 .visual-final {
-  z-index: 8;
-  width: 16%;
-  aspect-ratio: 1;
-  right: 19%;
-  top: 39%;
+  z-index: 5;
+
+  left: 1638.7676px;
+  top: 800px;
+
+  width: 148px;
+  height: 147px;
+
+  aspect-ratio: auto;
+}
+
+
+/* ---------------------------------------------------------
+   06. CIRCULAR CROP / FOCUS
+   Figma node: 200:396
+
+   x: 1437.0967
+   y: 268.0865
+   w: 293
+   h: 298.4259
+--------------------------------------------------------- */
+
+.visual-circle {
+  z-index: 2;
+
+  left: 1437.0967px;
+  top: 268.0865px;
+
+  width: 293px;
+  height: 298.4259px;
+
+  aspect-ratio: auto;
+
+  border-radius: 50%;
 }
 
 .visual.is-dimmed {
@@ -237,89 +664,6 @@ img {
   z-index: 12;
 }
 
-.hotspot {
-  position: absolute;
-  z-index: 15;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: 1px solid rgba(239,236,231,.9);
-  background: rgba(48,46,40,.14);
-  cursor: pointer;
-  transition: .25s ease;
-}
-
-.hotspot::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(239,236,231,.95);
-}
-
-.hotspot:hover,
-.hotspot:focus-visible,
-.hotspot.is-active {
-  background: rgba(239,236,231,.28);
-  transform: scale(1.08);
-  outline: none;
-}
-
-.hotspot-a {
-  left: 52%;
-  top: 31%;
-}
-
-.hotspot-b {
-  left: 42%;
-  top: 65%;
-}
-
-.connector {
-  position: absolute;
-  z-index: 10;
-  height: 1px;
-  background: rgba(48,46,40,.36);
-  transform-origin: left center;
-  pointer-events: none;
-}
-
-.connector-a {
-  width: 27%;
-  left: 54%;
-  top: 33%;
-  transform: rotate(-20deg);
-}
-
-.connector-b {
-  width: 28%;
-  left: 17%;
-  top: 70%;
-  transform: rotate(-9deg);
-}
-
-.magnifier {
-  position: absolute;
-  z-index: 20;
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
-  border: 1px solid rgba(239,236,231,.92);
-  box-shadow:
-    0 0 0 1px rgba(48,46,40,.12),
-    0 16px 40px rgba(48,46,40,.16);
-  background-image: url("./images/hero-main.jpg");
-  background-repeat: no-repeat;
-  background-size: 880px auto;
-  left: 54%;
-  top: 43%;
-  transform: translate(-50%, -50%);
-  cursor: grab;
-  touch-action: none;
-}
-
-.magnifier:active {
-  cursor: grabbing;
-}
 
 .scroll-hint {
   position: absolute;
@@ -497,14 +841,7 @@ img {
     --side: 20px;
   }
 
-  .site-header {
-    padding-inline: 20px;
-  }
-
-  .main-nav a:nth-child(2),
-  .main-nav a:nth-child(3) {
-    display: none;
-  }
+  
 
   .hero {
     min-height: auto;
