@@ -287,246 +287,118 @@ const stageData = {
 
 };
 
-    /* Intro Timeline */
 
-    const introTimeline = gsap.timeline({
+/* =========================================================
+   3. HOTSPOT INTERACTION
+========================================================= */
 
-        defaults: {
+function setActiveVisual(name) {
 
-            ease: "power3.out"
+    visuals.forEach((visual) => {
 
-        }
+        const visualName = visual.dataset.visual;
+
+        const isTarget = visualName === name;
+
+        const isMain = visualName === "observe";
+
+        visual.classList.toggle(
+            "is-active",
+            isTarget
+        );
+
+        visual.classList.toggle(
+            "is-dimmed",
+            !isTarget && !isMain
+        );
 
     });
 
+    hotspots.forEach((hotspot) => {
 
+        hotspot.classList.toggle(
+            "is-active",
+            hotspot.dataset.target === name
+        );
 
-    /* 01
-       나비 화면 진입
-    */
+    });
 
-    introTimeline.fromTo(
+}
+/* 06
+   Hero Main Image 등장
+*/
 
-        butterfly,
+introTimeline.to(
 
-        {
+    ".hero-stage .visual-main",
 
-            x: "30vw",
+    {
 
-            y: "-15vh",
+        opacity: 1,
 
-            rotation: -18,
+        y: 0,
 
-            scale: 0.55,
+        scale: 1,
 
-            opacity: 0
+        duration: 0.8
 
-        },
+    },
 
-        {
+    "-=0.3"
 
-            x: 0,
+);
 
-            y: 0,
 
-            rotation: 0,
 
-            scale: 1,
+/* 07
+   주변 이미지 등장
+*/
 
-            opacity: 1,
+introTimeline.to(
 
-            duration: 1.4
+    ".hero-stage .visual:not(.visual-main)",
 
-        }
+    {
 
-    );
+        opacity: 1,
 
+        y: 0,
 
+        scale: 1,
 
-    /* 02
-       왼쪽 날개
-    */
+        duration: 0.7,
 
-    introTimeline.to(
+        stagger: 0.08
 
-        leftWing,
+    },
 
-        {
+    "-=0.45"
 
-            rotationY: 60,
+);
 
-            duration: 0.16,
 
-            yoyo: true,
 
-            repeat: 5,
+/* 08
+   Hero 텍스트 등장
+*/
 
-            ease: "sine.inOut"
+introTimeline.to(
 
-        },
+    ".hero-copy",
 
-        "-=0.9"
+    {
 
-    );
+        opacity: 1,
 
+        y: 0,
 
+        duration: 0.8
 
-    /* 03
-       오른쪽 날개
-    */
+    },
 
-    introTimeline.to(
+    "-=0.55"
 
-        rightWing,
-
-        {
-
-            rotationY: -60,
-
-            duration: 0.16,
-
-            yoyo: true,
-
-            repeat: 5,
-
-            ease: "sine.inOut"
-
-        },
-
-        "<"
-
-    );
-
-
-
-    /* 04
-       나비 확대
-       → 사진으로 전환
-    */
-
-    introTimeline.to(
-
-        butterfly,
-
-        {
-
-            scale: 4,
-
-            opacity: 0,
-
-            duration: 0.8,
-
-            ease: "power4.in"
-
-        }
-
-    );
-
-
-
-    /* 05
-       검은 Intro 화면 제거
-    */
-
-    introTimeline.to(
-
-        overlay,
-
-        {
-
-            autoAlpha: 0,
-
-            duration: 0.5,
-
-            onComplete: () => {
-
-                overlay.remove();
-
-            }
-
-        },
-
-        "-=0.3"
-
-    );
-
-
-
-    /* 06
-       Hero Main Image 등장
-    */
-
-    introTimeline.to(
-
-        ".hero-stage .visual-main",
-
-        {
-
-            opacity: 1,
-
-            y: 0,
-
-            scale: 1,
-
-            duration: 0.8
-
-        },
-
-        "-=0.3"
-
-    );
-
-
-
-    /* 07
-       주변 이미지 등장
-    */
-
-    introTimeline.to(
-
-        ".hero-stage .visual:not(.visual-main)",
-
-        {
-
-            opacity: 1,
-
-            y: 0,
-
-            scale: 1,
-
-            duration: 0.7,
-
-            stagger: 0.08
-
-        },
-
-        "-=0.45"
-
-    );
-
-
-
-    /* 08
-       Hero 텍스트 등장
-    */
-
-    introTimeline.to(
-
-        ".hero-copy",
-
-        {
-
-            opacity: 1,
-
-            y: 0,
-
-            duration: 0.8
-
-        },
-
-        "-=0.55"
-
-    );
+);
 
 }
 
@@ -1759,8 +1631,6 @@ function initPortfolio() {
     fitHeroCanvas();
 
     initAudioControls();
-
-    runIntro();
 
     buildHeroScrollAnimation();
 
