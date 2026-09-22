@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="description"
+    content="EUNYEM — UX/UI Designer & Front-End Developer portfolio"
+  />
+
+  <title>Lucy Ko — Form / Unform</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="./css/demo1.css " />
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+</head>
+
+<body>
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="#top"
+      aria-label="Go to top"
+    >
+      EUNYEM KO
+    </a>
+
+    <nav
+      class="site-nav"
+      aria-label="Primary navigation"
+    >
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+  </header>
+
+
+  <main id="top">
+
+    <!-- ===============================
+         HERO
+    ================================ -->
+
+    <section
+      class="hero"
+      aria-labelledby="hero-title"
+    >
+
+      <!-- THREE.JS -->
+      <div
+        class="hero__webgl"
+        aria-hidden="true"
+      >
+        <canvas id="webgl"></canvas>
+      </div>
+
+
+      <!-- visual effects -->
+      <div
+        class="hero__vignette"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="hero__grain"
+        aria-hidden="true"
+      ></div>
+
+
+      <!-- TEXT -->
+      <div class="hero__content">
+
+        <div class="hero__statement">
+
+          <p class="eyebrow">
+            FORM / UNFORM — 01
+          </p>
+
+          <h1
+            id="hero-title"
+            class="headline"
+          >
+
+            <span class="headline__line">
+              I TURN
+            </span>
+
+            <span
+              class="
+                headline__line
+                headline__line--complexity
+              "
+            >
+              COMPLEXITY
+            </span>
+
+            <span class="headline__line">
+              INTO CLEAR
+            </span>
+
+            <span class="headline__line">
+              FORM.
+            </span>
+
+          </h1>
+
+
+          <div class="hero__meta">
+
+            <span>
+              UX/UI DESIGNER · FRONT-END
+            </span>
+
+            <span>
+              SEOUL / 2026
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- SCROLL PROCESS TEXT -->
+
+        <div
+          class="hero__process"
+          aria-hidden="true"
+        >
+
+          <p class="eyebrow">
+            PROCESS / 02
+          </p>
+
+
+          <div
+            class="
+              process-word
+              process-word--observe
+            "
+          >
+
+            <span>01</span>
+
+            <strong>
+              OBSERVE
+            </strong>
+
+          </div>
+
+
+          <div
+            class="
+              process-word
+              process-word--focus
+            "
+          >
+
+            <span>02</span>
+
+            <strong>
+              FOCUS
+            </strong>
+
+          </div>
+
+
+          <div
+            class="
+              process-word
+              process-word--structure
+            "
+          >
+
+            <span>03</span>
+
+            <strong>
+              STRUCTURE
+            </strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STRUCTURE GRID -->
+
+      <div
+        class="structure-grid"
+        aria-hidden="true"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+
+      <!-- LOWER UI -->
+
+      <div class="hero__footer">
+
+        <div class="hero__descriptor">
+
+          <span class="descriptor-line"></span>
+
+          <p>
+            DESIGN<br>
+            FOR A CLEARER<br>
+            TOMORROW
+          </p>
+
+        </div>
+
+
+        <div class="scroll-hint">
+
+          <span>
+            SCROLL TO FORM
+          </span>
+
+          <span class="scroll-hint__arrow">
+            ↓
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <!-- progress -->
+
+      <div
+        class="hero__index"
+        aria-hidden="true"
+      >
+
+        <span id="step-current">
+          01
+        </span>
+
+        <span class="hero__index-line">
+          <i></i>
+        </span>
+
+        <span>
+          03
+        </span>
+
+      </div>
+
+
+      <!-- selected work transition -->
+
+      <div
+        class="hero__transition-title"
+        aria-hidden="true"
+      >
+
+        <span>
+          SELECTED
+        </span>
+
+        <strong>
+          WORK
+        </strong>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- ===============================
+         TEMP SELECTED WORK
+    ================================ -->
+
+    <section
+      class="work-preview"
+      id="work"
+      aria-label="Selected work preview"
+    >
+
+      <div class="work-preview__top">
+
+        <p>
+          SELECTED WORK
+        </p>
+
+        <span>
+          2024 — 2026
+        </span>
+
+      </div>
+
+
+      <article class="project-card">
+
+        <div class="project-card__media">
+
+          <div class="project-card__placeholder">
+
+            HAEVICHI JEJU
+
+          </div>
+
+        </div>
+
+
+        <div class="project-card__info">
+
+          <p>
+            01
+          </p>
+
+          <h2>
+            HAEVICHI JEJU<br>
+            REDESIGN
+          </h2>
+
+          <p>
+            UX RESEARCH · IA · INTERACTION · UI
+          </p>
+
+        </div>
+
+      </article>
+
+    </section>
+
+
+
+    <section
+      class="placeholder-section"
+      id="about"
+    >
+      <p>
+        ABOUT / PLACEHOLDER
+      </p>
+    </section>
+
+
+    <footer
+      class="placeholder-section"
+      id="contact"
+    >
+      <p>
+        CONTACT / PLACEHOLDER
+      </p>
+    </footer>
+
+  </main>
+
+
+  <script
+    type="module"
+    src="./js/demo3.js"
+  ></script>
+
+</body>
+</html>

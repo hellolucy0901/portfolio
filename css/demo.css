@@ -1,0 +1,109 @@
+:root {
+  --egg-background: #efece7;
+  --egg-text: #302e28;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--egg-background);
+  color: var(--egg-text);
+  font-family: Arial, "Noto Sans KR", sans-serif;
+}
+
+.egg-demo {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.liquid-egg {
+  position: relative;
+  width: min(100%, 680px);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  isolation: isolate;
+}
+
+.egg-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.liquid-egg.is-ready .egg-canvas {
+  opacity: 1;
+}
+
+.liquid-egg.is-ready .egg-fallback {
+  display: none;
+}
+
+/* WebGL을 사용할 수 없을 때 표시하는 정지 형태 */
+.egg-fallback {
+  position: absolute;
+  width: 48%;
+  height: 65%;
+  left: 26%;
+  top: 17%;
+
+  border-radius: 48% 48% 46% 46% / 55% 55% 45% 45%;
+
+  background:
+    radial-gradient(
+      ellipse at 26% 25%,
+      #8b8c8f 0%,
+      #202124 13%,
+      transparent 29%
+    ),
+    radial-gradient(
+      ellipse at 85% 60%,
+      #676a70 0%,
+      #111214 13%,
+      transparent 27%
+    ),
+    #030405;
+
+  box-shadow: inset -8px -10px 20px #000;
+}
+
+.egg-fallback::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 9%;
+  bottom: -3%;
+  width: 82%;
+  height: 7%;
+  border-radius: 50%;
+  background: #24211f;
+  opacity: 0.3;
+  filter: blur(12px);
+}
+
+
+.egg-status {
+  position: absolute;
+  inset: auto 0 0;
+  text-align: center;
+  font-size: 12px;
+}
+
+.egg-status:empty {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .egg-demo {
+    padding: 12px;
+  }
+}

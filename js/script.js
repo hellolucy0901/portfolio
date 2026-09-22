@@ -21,7 +21,7 @@ const prefersReducedMotion = window.matchMedia(
 ========================================================= */
 
 const HERO_BASE_WIDTH = 1920;
-const HERO_BASE_HEIGHT = 1125;
+const HERO_BASE_HEIGHT = 1050;
 
 
 function fitHeroCanvas() {
@@ -85,8 +85,7 @@ function fitHeroCanvas() {
     const scale =
         Math.min(
             widthScale,
-            heightScale,
-            1
+            heightScale
         );
 
 
@@ -1485,14 +1484,25 @@ function initPortfolio() {
 
     initAudioControls();
 
-    buildHeroScrollAnimation();
+    /*
+        Hero intro가 모두 끝난 뒤
+        기존 scroll animation 시작
+    */
+    window.addEventListener(
+        "heroIntroComplete",
+        () => {
+            buildHeroScrollAnimation();
+        },
+        {
+            once: true
+        }
+    );
 
     buildBridgeTransition();
 
     buildBridgeTextAnimation();
 
 }
-
 
 /* DOM 준비 후 시작 */
 

@@ -52,7 +52,7 @@ img {
   left: 0;
 
   width: 1920px;
-  height: 1125px;
+  height: 1050px;
 
   z-index: 1;
 
@@ -773,23 +773,16 @@ img {
 
   aspect-ratio: auto;
 }
-
-
-/* ---------------------------------------------------------
-   06. CIRCULAR CROP / FOCUS
-   Figma node: 200:396
-
-   x: 1437.0967
-   y: 268.0865
-   w: 293
-   h: 298.4259
---------------------------------------------------------- */
+/* =========================================================
+   CIRCULAR CROP / FOCUS
+   Figma node: 187:141
+========================================================= */
 
 .visual-circle {
   z-index: 2;
 
-  left: 1437.0967px;
-  top: 268.0865px;
+  left: 1459.04px;
+  top: 222.6298px;
 
   width: 293px;
   height: 298.4259px;
@@ -797,6 +790,64 @@ img {
   aspect-ratio: auto;
 
   border-radius: 50%;
+}
+/* =========================================================
+   HERO INTRO — FOCUS
+========================================================= */
+
+/* =========================================================
+   HERO INTRO — FOCUS POINT
+   Figma node: 187:144
+========================================================= */
+
+.intro-focus-point {
+  position: absolute;
+
+  left: 1284.9346px;
+  top: 363.7917px;
+
+  width: 12.4692px;
+  height: 12.4692px;
+
+  border: 1px solid #302e28;
+  background: transparent;
+
+  z-index: 3;
+
+  pointer-events: none;
+
+  transform-origin: center;
+}
+
+/* ---------------------------------------------------------
+   Focus Point → Circular Crop 연결선
+--------------------------------------------------------- */
+
+.intro-focus-line {
+  position: absolute;
+
+  left: 1269.5px;
+  top: 409px;
+
+  width: 228px;
+  height: 51px;
+
+  overflow: visible;
+
+  z-index: 14;
+
+  pointer-events: none;
+}
+
+
+.intro-focus-line path {
+  fill: none;
+
+  stroke: #302e28;
+
+  stroke-width: 1;
+
+  vector-effect: non-scaling-stroke;
 }
 
 .visual.is-dimmed {
@@ -1079,4 +1130,13 @@ img {
     transition-duration: .01ms !important;
   }
 
+}
+/* =========================================================
+   HERO INTRO
+   GSAP intro가 실행되는 동안
+   기존 visual transition과의 충돌 방지
+========================================================= */
+
+body.is-hero-intro .visual {
+  transition: none;
 }

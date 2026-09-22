@@ -16,192 +16,200 @@
     <link rel="stylesheet" href="./css/style.css" />
 </head>
 
-<body>
-    <main>
-        <!-- =========================================================
+<body class="is-hero-intro">
+    <!-- =========================================================
          HERO / OBSERVE → FOCUS → STRUCTURE
          ========================================================= -->
-        <section id="intro" class="hero" aria-labelledby="hero-title">
+    <section id="intro" class="hero" aria-labelledby="hero-title">
 
 
-            <!-- =========================================================
+        <!-- =========================================================
          FIGMA 1920 × 1125 MASTER CANVAS
     ========================================================= -->
-            <div class="hero-canvas">
+        <div class="hero-canvas">
 
 
-                <!-- Header -->
-                <header class="hero-header">
+            <!-- Header -->
+            <header class="hero-header">
 
-                    <p class="hero-header__name">
-                        EUNYEM KO
-                    </p>
+                <p class="hero-header__name">
+                    EUNYEM KO
+                </p>
 
-                    <div class="hero-header__audio" aria-label="Audio controls">
+                <div class="hero-header__audio" aria-label="Audio controls">
 
-                        <button type="button" class="audio-toggle" data-audio-toggle="sound" aria-pressed="true"
-                            aria-label="Toggle sound">
-                            <span class="audio-toggle__label">Sound</span>
-                            <span class="audio-toggle__state">ON</span>
-                        </button>
+                    <button type="button" class="audio-toggle" data-audio-toggle="sound" aria-pressed="true"
+                        aria-label="Toggle sound">
+                        <span class="audio-toggle__label">Sound</span>
+                        <span class="audio-toggle__state">ON</span>
+                    </button>
 
-                        <span class="hero-header__divider" aria-hidden="true">|</span>
+                    <span class="hero-header__divider" aria-hidden="true">|</span>
 
-                        <button type="button" class="audio-toggle" data-audio-toggle="bgm" aria-pressed="true"
-                            aria-label="Toggle background music">
-                            <span class="audio-toggle__label">BGM</span>
-                            <span class="audio-toggle__state">ON</span>
-                        </button>
-
-                    </div>
-
-                </header>
-
-                <!-- Copy -->
-                <div class="hero-copy">
-
-                    <div class="hero-section-label">
-                        <span class="hero-section-label__line" aria-hidden="true"></span>
-
-                        <p class="hero-section-label__text">
-                            Product Design · UX/UI · Front-end
-                        </p>
-                    </div>
-
-
-                    <h1 id="hero-title" class="hero-title">
-                        <span>See Clearly.</span>
-                        <span>Design Better.</span>
-                    </h1>
-
-
-                    <p class="hero-description">
-                        <span>I turn complex information and interactions</span>
-                        <span>into clear, intuitive experiences.</span>
-                    </p>
+                    <button type="button" class="audio-toggle" data-audio-toggle="bgm" aria-pressed="true"
+                        aria-label="Toggle background music">
+                        <span class="audio-toggle__label">BGM</span>
+                        <span class="audio-toggle__state">ON</span>
+                    </button>
 
                 </div>
 
-                <!-- Images + Labels -->
-                <div class="hero-stage" data-hero-stage>
-                    <figure class="visual visual-main" data-visual="observe">
-                        <img src="./images/hero-main.jpg" alt="Macro detail used as the main observation target" />
-                    </figure>
+            </header>
+
+            <!-- Copy -->
+            <div class="hero-copy">
+
+                <div class="hero-section-label">
+                    <span class="hero-section-label__line" aria-hidden="true"></span>
+
+                    <p class="hero-section-label__text">
+                        Product Design · UX/UI · Front-end
+                    </p>
+                </div>
 
 
-                    <figure class="visual visual-circle" data-visual="examine">
-                        <img src="./images/hero-examine.jpg" alt="Magnified wing texture" />
+                <h1 id="hero-title" class="hero-title">
+                    <span>See Clearly.</span>
+                    <span>Design Better.</span>
+                </h1>
 
-                    </figure>
 
-                    <figure class="visual visual-blur" data-visual="unclear">
-                        <img src="./images/hero-blur.jpg" alt="Blurred, unresolved information" />
+                <p class="hero-description">
+                    <span>I turn complex information and interactions</span>
+                    <span>into clear, intuitive experiences.</span>
+                </p>
 
-                    </figure>
+            </div>
 
-                    <figure class="visual visual-detail" data-visual="detail">
-                        <img src="./images/hero-detail.jpg" alt="Fine texture discovered through observation" />
+            <!-- Images + Labels -->
+            <div class="hero-stage" data-hero-stage>
+                <figure class="visual visual-main" data-visual="observe">
+                    <img src="./images/hero-main.jpg" alt="Macro detail used as the main observation target" />
+                </figure>
 
-                    </figure>
+                <!-- =========================================================
+     HERO INTRO — FOCUS CONNECTION
+========================================================= -->
 
-                    <figure class="visual visual-pattern" data-visual="pattern">
-                        <img src="./images/hero-pattern.jpg" alt="Repeated pattern organized into structure" />
-                    </figure>
+                <div class="intro-focus-point" aria-hidden="true"></div>
 
-                    <figure class="visual visual-final" data-visual="structure" data-final-tile>
-                        <img src="./images/hero-final.jpg" alt="Geometric final structure" />
-                    </figure>
+                <svg class="intro-focus-line" viewBox="0 0 228 51" aria-hidden="true">
+                    <path d="M 0 50 C 70 48, 145 24, 228 0"></path>
+                </svg>
 
-                    <!-- =========================================================
+                <figure class="visual visual-circle" data-visual="examine">
+                    <img src="./images/hero-examine.jpg" alt="Magnified wing texture" />
+
+                </figure>
+
+                <figure class="visual visual-blur" data-visual="unclear">
+                    <img src="./images/hero-blur.jpg" alt="Blurred, unresolved information" />
+
+                </figure>
+
+                <figure class="visual visual-detail" data-visual="detail">
+                    <img src="./images/hero-detail.jpg" alt="Fine texture discovered through observation" />
+
+                </figure>
+
+                <figure class="visual visual-pattern" data-visual="pattern">
+                    <img src="./images/hero-pattern.jpg" alt="Repeated pattern organized into structure" />
+                </figure>
+
+                <figure class="visual visual-final" data-visual="structure" data-final-tile>
+                    <img src="./images/hero-final.jpg" alt="Geometric final structure" />
+                </figure>
+
+                <!-- =========================================================
      HERO IMAGE LABELS
      Figma: 200:398 / 200:399 / 200:401 / 200:403
 ========================================================= -->
 
-                    <div class="hero-visual-label hero-visual-label--observe">
-                        <span class="hero-visual-label__number">01</span>
-                        <span class="hero-visual-label__name">Observe</span>
-                    </div>
+                <div class="hero-visual-label hero-visual-label--observe">
+                    <span class="hero-visual-label__number">01</span>
+                    <span class="hero-visual-label__name">Observe</span>
+                </div>
 
-                    <div class="hero-visual-label hero-visual-label--focus">
-                        <span class="hero-visual-label__number">02</span>
-                        <span class="hero-visual-label__name">Focus</span>
-                    </div>
+                <div class="hero-visual-label hero-visual-label--focus">
+                    <span class="hero-visual-label__number">02</span>
+                    <span class="hero-visual-label__name">Focus</span>
+                </div>
 
-                    <div class="hero-visual-label hero-visual-label--discover">
-                        <span class="hero-visual-label__number">03</span>
-                        <span class="hero-visual-label__name">Discover</span>
-                    </div>
+                <div class="hero-visual-label hero-visual-label--discover">
+                    <span class="hero-visual-label__number">03</span>
+                    <span class="hero-visual-label__name">Discover</span>
+                </div>
 
-                    <div class="hero-visual-label hero-visual-label--structure">
-                        <span class="hero-visual-label__number">04</span>
-                        <span class="hero-visual-label__name">Structure</span>
-                    </div>
+                <div class="hero-visual-label hero-visual-label--structure">
+                    <span class="hero-visual-label__number">04</span>
+                    <span class="hero-visual-label__name">Structure</span>
+                </div>
 
 
-                    <div class="mobile-observation" data-mobile-observation aria-live="polite">
-                        <img src="./images/hero-examine.jpg" alt="" />
-                        <div>
-                            <strong>EXAMINE</strong>
-                            <span>Look closer before defining the problem.</span>
-                        </div>
-                    </div>
-
-                    <div class="observation-tabs" aria-label="Observation stages">
-                        <button type="button" data-mobile-target="examine" class="is-active">01 Observe</button>
-                        <button type="button" data-mobile-target="detail">02 Focus</button>
-                        <button type="button" data-mobile-target="pattern">03 Discover</button>
-                        <button type="button" data-mobile-target="structure">04 Structure</button>
+                <div class="mobile-observation" data-mobile-observation aria-live="polite">
+                    <img src="./images/hero-examine.jpg" alt="" />
+                    <div>
+                        <strong>EXAMINE</strong>
+                        <span>Look closer before defining the problem.</span>
                     </div>
                 </div>
+
+                <div class="observation-tabs" aria-label="Observation stages">
+                    <button type="button" data-mobile-target="examine" class="is-active">01 Observe</button>
+                    <button type="button" data-mobile-target="detail">02 Focus</button>
+                    <button type="button" data-mobile-target="pattern">03 Discover</button>
+                    <button type="button" data-mobile-target="structure">04 Structure</button>
+                </div>
             </div>
+        </div>
 
-        </section>
+    </section>
 
-        <!-- =========================================================
+    <!-- =========================================================
          BRIDGE — based on Figma node 163:68
          ========================================================= -->
-        <section class="bridge" data-bridge aria-labelledby="bridge-title">
-            <div class="bridge-image-wrap" data-bridge-target>
-                <img src="./images/hero-final.jpg" alt="Structured design result" />
+    <section class="bridge" data-bridge aria-labelledby="bridge-title">
+        <div class="bridge-image-wrap" data-bridge-target>
+            <img src="./images/hero-final.jpg" alt="Structured design result" />
+        </div>
+
+        <div class="bridge-copy">
+            <div class="section-label">
+                <span class="section-line" aria-hidden="true"></span>
+                <span>FROM OBSERVATION TO EXPERIENCE</span>
             </div>
 
-            <div class="bridge-copy">
-                <div class="section-label">
-                    <span class="section-line" aria-hidden="true"></span>
-                    <span>FROM OBSERVATION TO EXPERIENCE</span>
-                </div>
+            <h2 id="bridge-title">I look closely before I design.</h2>
 
-                <h2 id="bridge-title">I look closely before I design.</h2>
+            <p>
+                I observe behavior, question assumptions and bring structure
+                to complexity.
+            </p>
+        </div>
+    </section>
 
-                <p>
-                    I observe behavior, question assumptions and bring structure
-                    to complexity.
-                </p>
-            </div>
-        </section>
-
-        <!-- The following sections are structural placeholders only.
+    <!-- The following sections are structural placeholders only.
          They let navigation and scroll behaviour work while the
          detailed layouts are still being designed. -->
-        <section id="work" class="placeholder-section">
-            <p class="eyebrow">SELECTED WORK</p>
-            <h2>Selected projects will continue here.</h2>
-        </section>
+    <section id="work" class="placeholder-section">
+        <p class="eyebrow">SELECTED WORK</p>
+        <h2>Selected projects will continue here.</h2>
+    </section>
 
-        <section id="skill" class="placeholder-section">
-            <p class="eyebrow">HOW I WORK</p>
-            <h2>Analysis, structure and intentional interaction.</h2>
-        </section>
+    <section id="skill" class="placeholder-section">
+        <p class="eyebrow">HOW I WORK</p>
+        <h2>Analysis, structure and intentional interaction.</h2>
+    </section>
 
-        <section id="about" class="placeholder-section">
-            <p class="eyebrow">ABOUT</p>
-            <h2>About section.</h2>
-        </section>
+    <section id="about" class="placeholder-section">
+        <p class="eyebrow">ABOUT</p>
+        <h2>About section.</h2>
+    </section>
 
-        <section id="contact" class="placeholder-section">
-            <p class="eyebrow">CONTACT</p>
-            <h2>Let’s connect.</h2>
-        </section>
+    <section id="contact" class="placeholder-section">
+        <p class="eyebrow">CONTACT</p>
+        <h2>Let’s connect.</h2>
+    </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
