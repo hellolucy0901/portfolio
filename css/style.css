@@ -827,17 +827,6 @@ img {
   z-index: 12;
 }
 
-
-.scroll-hint {
-  position: absolute;
-  left: var(--side);
-  bottom: 26px;
-  margin: 0;
-  color: var(--text-secondary);
-  font-size: 9px;
-  letter-spacing: .2em;
-}
-
 /* INTRO OVERLAY */
 .intro-overlay {
   position: fixed;
@@ -1088,10 +1077,6 @@ img {
   .observation-tabs button.is-active {
     background: var(--text-primary);
     color: var(--text-inverse);
-  }
-
-  .scroll-hint {
-    display: none;
   }
 
   .bridge {
