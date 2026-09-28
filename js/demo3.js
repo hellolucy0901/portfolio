@@ -496,36 +496,47 @@ blob.receiveShadow =
 floatRig.add(
     blob
 );
+/* =========================================================
+   DEFORMATION STATE
+========================================================= */
 
 const deformState = {
-    /*
-      기존 큰 형태 변화
-      너무 강하지 않게 유지
-    */
-    macroAmount: 0.10,
 
     /*
-      기존 표면 질감 그대로
+      기존 표면 deformation 강도
+      현재 질감 유지
     */
-    microAmount: 0.022,
-    microFrequency: 4.2,
+    amount: 0.075,
 
-    breath: 1.0,
+    /*
+      기존 breathing
+    */
+    breath: 1,
+
+    /*
+      Scroll 시 Organic → Structure
+    */
+    structure: 0,
+
+    /*
+      구조화 단계 압축
+    */
+    flatten: 0,
+
+    /*
+      Complexity 구간의 불안정성
+    */
     energy: 0,
 
-    sphereMorph: 0,
-    smoothness: 0,
-
     /*
-      새로 추가
-  
-      내부에서 특정 지점을
-      밀어내는 힘
+      내부에서 특정 부분을
+      밖으로 밀어내는 강도
     */
-    pressureAmount: 0.28,
+    pressureAmount: 0.32,
 
     /*
-      압력점 이동 속도
+      내부 압력점이
+      이동하는 속도
     */
     pressureSpeed: 1
 };
